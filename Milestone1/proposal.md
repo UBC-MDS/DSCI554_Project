@@ -10,9 +10,11 @@ Identify the other questions you plan to ask in your survey to identify confound
 
 3. Describe how you plan to analyze the survey results (e.g., what statistical test(s) do you plan to employ?).
 
-4. Discuss the aspects of the UBC Office of Research Ethics document on Using Online Surveys that are relevant to your proposed survey.
+4. Describe how you plan to analyze the survey results (e.g., what statistical test(s) do you plan to employ?).
 
-5. IMPORTANT - Do not include questions that will collect any personal information with your survey, or any questions could identify an individual or vulnerable groups.
+5. Discuss the aspects of the UBC Office of Research Ethics document on Using Online Surveys that are relevant to your proposed survey.
+
+IMPORTANT - Do not include questions that will collect any personal information with your survey, or any questions could identify an individual or vulnerable groups.
 
 ---
 # Overview
