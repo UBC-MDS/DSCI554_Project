@@ -12,3 +12,15 @@ Identify the other questions you plan to ask in your survey to identify confound
 4. Discuss the aspects of the UBC Office of Research Ethics document on Using Online Surveys that are relevant to your proposed survey.
 
 5. IMPORTANT - Do not include questions that will collect any personal information with your survey, or any questions could identify an individual or vulnerable groups.
+
+---
+# Overview
+
+introduction
+survey topics ?
+
+# Strategy
+
+
+
+# Discussion
