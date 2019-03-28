@@ -8,4 +8,4 @@
 > 1\) Much more difficult than average, 2) Somewhat more difficult than average, 3) Average, 4) Somewhat easier than average, 5) Much easier than average
 5. How would you rate your math skills (relative to the general adult population)?
 > 1\) Much lower than average, 2) Somewhat lower than average, 3) Average, 4) Somewhat higher than average, 5) Much higher than average
--  A less subjective alternative to 5: 1 or 2 abstract reasoning test questions.  For example: http://aptitudetest.tripod.com/1.pdf
+-  A less subjective alternative to 5: instead use 1 or 2 abstract reasoning test questions.  For example: http://aptitudetest.tripod.com/1.pdf
