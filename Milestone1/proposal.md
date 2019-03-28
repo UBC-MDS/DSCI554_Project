@@ -1,11 +1,12 @@
+# Proposal
+
 ### Identify the question that your team in interested in answering with the survey. The aim of the survey should be to try to answer one specific and testable question. Examples of specific and testable questions include (you can use one of these if you really like them):
 
-DSCI 512 is a programming course in the MDS program at UBC, which introduces fundamental algorithm such as sorting and searching, as well as data structures. Some students reflected that they have been experiencing a hard time with course materials and lab assignments. This leads to our survey question:
+DSCI 512 is a programming and algorithms course in the MDS program at UBC which introduces fundamental algorithms such as sorting and searching, as well as data structures. According to a poll done during the course, some students reflected that they have been experiencing a hard time with course materials and lab assignments. This leads to our survey question:
 
-Does the programming experience prior to the MDS program influence a person's self-perceived difficulty regarding DSCI 512 (Algorithms and Data Structures)?
+Does the level of programming experience prior to the MDS program influence a person's self-perceived difficulty regarding DSCI 512 (Algorithms and Data Structures)?
 
 ### Identify the other questions you plan to ask in your survey to identify confounding variables and justify/explain why you plan to include them.
-
 
 #### 1.0 Confounding Variable: Sex (type: category)
 
@@ -17,11 +18,13 @@ Does the programming experience prior to the MDS program influence a person's se
 
 #### 2.0 Confounding Variable: Math Skills
 
-**Explanation**:
 
-**Questions**: How would you rate your math skills (relative to the general adult population)?
+**Explanation**: Mathematics is an essential skill when it comes down to learning algorithms. Algorithms utilized everywhere to provide solutions to problems, but developing algorithms requires strong logical thinking abilities. Mathematics is the formal study of logical consequences which is extremely important when understanding algorithms. Therefore, it is evident that your ability in math may affect your level of programming experience, as well as the difficulty in learning DSCI 512.
 
-**Options**: 1) Much lower than average, 2) Somewhat lower than average, 3) Average, 4) Somewhat higher than average, 5) Much higher than average
+**Questions**: Among all the math courses you have taken in the past, in general, how were your grades compared to others? For example, Calculus, Linear Algebra, Statistics.
+
+**Options**: 1) Below average, 2) Average, 3) Above average
+
 
 #### 3.0 Confounding Variable: Friends who have jobs associated with programming
 
@@ -59,7 +62,11 @@ and 2) Regression Test.???
 
 ### Discuss the aspects of the UBC Office of Research Ethics document on Using Online Surveys that are relevant to your proposed survey.
 
+<<<<<<< HEAD
 
 # References:
 
 [male vs female]: https://www.dailymail.co.uk/g00/health/article-1286817/Women-prone-emotional-stress-men-sensitivity-hormone.html?i10c.ua=4&i10c.encReferrer=&i10c.dv=20
+=======
+According to the Office of Research Ethics document, the collection of opinions and information are considered personal information if the information could be linked or associated with the individual. Such data, if collected through a survey, must not be stored outside of Canada and should be surveyed through tools hosted within Canada. Some of the variables that we thought about including in our survey were potentially considered "personal information", such as an individual's age or gender. However, due to the small population of our MDS program, it is definitely easy for this type of information to be identifying. As we are also taking a privacy and ethics course, we understand that these issues can bring many unnecessary problems. Ultimately, we decided to some variables, such as age, from our survey, regardless of whether they are confounding variables or not.
+>>>>>>> upstream/master
