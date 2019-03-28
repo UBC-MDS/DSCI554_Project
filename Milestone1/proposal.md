@@ -6,19 +6,55 @@ Does the programming experience prior to the MDS program influence a person's se
 
 ### Identify the other questions you plan to ask in your survey to identify confounding variables and justify/explain why you plan to include them.
 
-Target variable:
-Self-perceived difficulty (scale from 1 to 5)
 
-Main covariate:
-previous programming experience (scale from 1 to 5, entry to expert)
+#### 1.0 Confounding Variable: Sex
 
-Confounding Variables:
-1. Gender (Male, female, unspecified)
-2. Undergraduate degree (1. sciences, 2. Finance, Business, Management & Eco 3. Math & stats 4.
-  Engineering (excluding computer engineering) 5. Computer Science/Engineering 6. Other )
-3. Age (continuous? bin?)
-4. Back up(operating system)
+Explanation:
+
+Question: Sex?
+
+Options: 1) Female, 2) Male, 3) Other
+
+#### 2.0 Confounding Variable: Math Skills
+
+Explanation:
+
+Question: How would you rate your math skills (relative to the general adult population)?
+
+Options: 1) Much lower than average, 2) Somewhat lower than average, 3) Average, 4) Somewhat higher than average, 5) Much higher than average
+
+#### 3.0 Confounding Variable: ???
+
+Explanation:
+
+Question:
+
+Options:
+
+
+#### Main Covariate: Previous programming experience
+
+Explanation:
+
+Question:
+
+Options:(scale from 1 to 5, entry to expert)
+
+#### Outcome variable: Self-perceived difficulty regarding DSCI 512
+
+Explanation:
+
+Question: How difficult did you find DSCI 512 relative to the other courses in the MDS program? 
+
+Options: 1) Much easier than average, 2) Somewhat easier than average, 3) Average, 4) Somewhat more difficult than average, 5) Much more difficult than average.
 
 ### Describe how you plan to analyze the survey results (e.g., what statistical test(s) do you plan to employ?).
+
+Null hypothesis: The programming experience prior to the MDS program does not influence a person's self-perceived difficulty regarding DSCI 512.
+
+Alternative hypothesis: The programming experience prior to the MDS program influences a person's self-perceived difficulty regarding DSCI 512.
+
+We plane to analyze the survey results in the following ways: 1) exploratory data analysis (EDA)
+and 2) Regression Test.???
 
 ### Discuss the aspects of the UBC Office of Research Ethics document on Using Online Surveys that are relevant to your proposed survey.
