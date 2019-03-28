@@ -38,7 +38,7 @@ if a MDS student have friends who work for IT companies, they are more likely to
 
 #### Main Covariate: Previous programming experience
 
-**Explanation**: 
+**Explanation**:
 
 **Questions**:
 
@@ -64,6 +64,17 @@ and 2) Regression Test.???
 
 According to the Office of Research Ethics document, the collection of opinions and information are considered personal information if the information could be linked or associated with the individual. Such data, if collected through a survey, must not be stored outside of Canada and should be surveyed through tools hosted within Canada. Some of the variables that we thought about including in our survey were potentially considered "personal information", such as an individual's age or gender. However, due to the small population of our MDS program, it is definitely easy for this type of information to be identifying. As we are also taking a privacy and ethics course, we understand that these issues can bring many unnecessary problems. Ultimately, we decided to some variables, such as age, from our survey, regardless of whether they are confounding variables or not.
 
+In order to comply to the UBC Office of Research Ethics, we would provide a cover letter (consent form) to all survey participants. The cover letter would include:
+
+- the sentence:  “By completing the questionnaire, you are consenting to participate in this research.”
+- the purpose of the survey
+- a description of the topic of the survey
+- contact information
+- risks and benefits
+- limits to confidentiality
+-  a statement that participation is optional
+- the UBC Research Participant Complaint Line text
+- (if possible) the UBC letterhead
 
 # References:
 
