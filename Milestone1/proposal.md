@@ -18,7 +18,7 @@ Options: 1) Female, 2) Male, 3) Other
 
 #### 2.0 Confounding Variable: Math Skills
 
-Explanation: Mathematics is an essential skill when it comes down to learning algorithms. Algorithms utilized everywhere to provide solutions to problems, but developing algorithms requires strong logical thinking abilities. Mathematics is the formal study of logical consequences which is extremely important when understanding algorithms.
+Explanation: Mathematics is an essential skill when it comes down to learning algorithms. Algorithms utilized everywhere to provide solutions to problems, but developing algorithms requires strong logical thinking abilities. Mathematics is the formal study of logical consequences which is extremely important when understanding algorithms. Therefore, it is evident that your ability in math may affect your level of programming experience, as well as the difficulty in learning DSCI 512. 
 
 Questions to identify the confounding variable: Among all the math courses you have taken in the past, in general, how were your grades compared to others? For example, Calculus, Linear Algebra, Statistics.
 
