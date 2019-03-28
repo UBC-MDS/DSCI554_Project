@@ -1,28 +1,10 @@
-1. Read UBC Office of Research Ethics document on Using Online Surveys.
+### Identify the question that your team in interested in answering with the survey. The aim of the survey should be to try to answer one specific and testable question. Examples of specific and testable questions include (you can use one of these if you really like them):
 
-2. Identify the question that your team in interested in answering with the survey. The aim of the survey should be to try to answer one specific and testable question. Examples of specific and testable questions include (you can use one of these if you really like them):
+DSCI 512 is a programming course in the MDS program at UBC, which introduces fundamental algorithm such as sorting and searching, as well as data structures. Some students reflected that they have been experiencing a hard time with course materials and lab assignments. This leads to our survey question:
 
-Does the first programming language someone learns influence whether they prefer R or Python (or have no preference)?
-Does a person's self-assessment of their knowledge of Git influence their Git tool of choice (e.g., command line, Github website, Git Kraken, Sourcetree, other)?
-Does laptop operating system influence a person's self-rated enjoyment of the MDS program in the first block of the program?
+Does the programming experience prior to the MDS program influence a person's self-perceived difficulty regarding DSCI 512 (Algorithms and Data Structures)?
 
-Identify the other questions you plan to ask in your survey to identify confounding variables and justify/explain why you plan to include them.
-
-3. Describe how you plan to analyze the survey results (e.g., what statistical test(s) do you plan to employ?).
-
-4. Describe how you plan to analyze the survey results (e.g., what statistical test(s) do you plan to employ?).
-
-5. Discuss the aspects of the UBC Office of Research Ethics document on Using Online Surveys that are relevant to your proposed survey.
-
-IMPORTANT - Do not include questions that will collect any personal information with your survey, or any questions could identify an individual or vulnerable groups.
-
----
-# Overview
-
-introduction
-survey topics ?
-
-Does the programming experience prior to the MDS program influence a person's self-perceived difficulty in DSCI 512 (Algorithms and Data Structures) ?
+### Identify the other questions you plan to ask in your survey to identify confounding variables and justify/explain why you plan to include them.
 
 Target variable:
 Self-perceived difficulty (scale from 1 to 5)
@@ -35,10 +17,8 @@ Confounding Variables:
 2. Undergraduate degree (1. sciences, 2. Finance, Business, Management & Eco 3. Math & stats 4.
   Engineering (excluding computer engineering) 5. Computer Science/Engineering 6. Other )
 3. Age (continuous? bin?)
-4. Back up (operating system)
+4. Back up(operating system)
 
-# Strategy
+### Describe how you plan to analyze the survey results (e.g., what statistical test(s) do you plan to employ?).
 
-
-
-# Discussion
+### Discuss the aspects of the UBC Office of Research Ethics document on Using Online Surveys that are relevant to your proposed survey.
