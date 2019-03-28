@@ -10,7 +10,7 @@ Does the level of programming experience prior to the MDS program influence a pe
 
 #### 1.0 Confounding Variable: Sex (type: category)
 
-**Explanation**: Human are specialized into male and female. The study reported that the number of men works in the IT industry is much greater than the number of women. In other words, man is more likely to have programming experience. On the other hand, woman tend to be reactive and sensitive to stress and bad news [ref], which may affect the way woman perceives the level of difficulty when they take the course.
+**Explanation**: Human are specialized into male and female. The study reported that the number of men works in the IT industry is much greater than the number of women. In other words, man is more likely to have programming experience. On the other hand, woman tend to be reactive and sensitive to stress and bad news [1], which may affect the way woman perceives the level of difficulty when they take the course.
 
 **Questions**: Sex?
 
@@ -36,25 +36,36 @@ if a MDS student have friends who work for IT companies, they are more likely to
 **Options**: 1) No, 2) Yes
 
 
-#### Main Covariate: Previous programming experience
+#### Main Covariate: Previous programming experience (type: category)
 
-**Explanation**:
+**Explanation**: The level of the previous experience is the main independent variable that we are interested in, which is potential reasons for variation of the self-perceived difficulty regarding 512.
 
-**Questions**:
+**Questions**: ???
 
-**Options**:(scale from 1 to 5, entry to expert)
+**Options**:(scale from 1 to 5, entry to expert) ???
 
-#### Outcome variable: Self-perceived difficulty regarding DSCI 512
+#### Outcome: Self-perceived difficulty regarding DSCI 512 (type: category)
 
-**Explanation**:
+**Explanation**: Self-perceived difficulty regarding DSCI 512 is the outcome whose variation is being studied.
 
 **Question**: How difficult did you find DSCI 512 relative to the other courses in the MDS program?
 
-**Options**: 1) Much easier than average, 2) Somewhat easier than average, 3) Average, 4) Somewhat more difficult than average, 5) Much more difficult than average.
+**Options**: 1) Easier than average,  2) Average, 3) More difficult than average.
+
+| Variable | Name | Type |
+|---|---|---|
+| Confounder | Sex | category |
+| Confounder | Math Skills | category |
+| Confounder | Friends who have jobs associated with programming | category |
+| Main Covariate | Previous programming experience | category |
+| Outcome | Self-perceived difficulty | category |
+
+_A summary table of variables in our analysis__
 
 ### Describe how you plan to analyze the survey results (e.g., what statistical test(s) do you plan to employ?).
 
 **Null hypothesis**: The level of programming experience prior to the MDS program does not influence a person's self-perceived difficulty regarding DSCI 512.
+
 **Alternative hypothesis**: The level of programming experience prior to the MDS program influences a person's self-perceived difficulty regarding DSCI 512.
 
 We plane to analyze the survey results in the following ways: 1) exploratory data analysis (EDA)
@@ -78,4 +89,4 @@ In order to comply to the UBC Office of Research Ethics, we would provide a cove
 
 # References:
 
-[male vs female]: https://www.dailymail.co.uk/g00/health/article-1286817/Women-prone-emotional-stress-men-sensitivity-hormone.html?i10c.ua=4&i10c.encReferrer=&i10c.dv=20
+[1]: https://www.dailymail.co.uk/g00/health/article-1286817/Women-prone-emotional-stress-men-sensitivity-hormone.html?i10c.ua=4&i10c.encReferrer=&i10c.dv=20
