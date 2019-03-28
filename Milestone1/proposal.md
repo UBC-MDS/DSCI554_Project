@@ -7,11 +7,11 @@ Does the programming experience prior to the MDS program influence a person's se
 ### Identify the other questions you plan to ask in your survey to identify confounding variables and justify/explain why you plan to include them.
 
 
-#### 1.0 Confounding Variable: Sex
+#### 1.0 Confounding Variable: Sex (type: category)
 
-Explanation:
+Explanation: Human are specialized into male, female and other. The study reported that the number of male works in the IT industry is much greater than the number of female and other. In other words, male is more likely to have programming experience. If
 
-Question: Sex?
+Questions to identify the confounding variable: Sex?
 
 Options: 1) Female, 2) Male, 3) Other
 
@@ -19,7 +19,7 @@ Options: 1) Female, 2) Male, 3) Other
 
 Explanation:
 
-Question: How would you rate your math skills (relative to the general adult population)?
+Questions to identify the confounding variable: How would you rate your math skills (relative to the general adult population)?
 
 Options: 1) Much lower than average, 2) Somewhat lower than average, 3) Average, 4) Somewhat higher than average, 5) Much higher than average
 
@@ -27,7 +27,7 @@ Options: 1) Much lower than average, 2) Somewhat lower than average, 3) Average,
 
 Explanation:
 
-Question:
+Questions to identify the confounding variable:
 
 Options:
 
@@ -36,7 +36,7 @@ Options:
 
 Explanation:
 
-Question:
+Questions to identify the confounding variable:
 
 Options:(scale from 1 to 5, entry to expert)
 
@@ -44,7 +44,7 @@ Options:(scale from 1 to 5, entry to expert)
 
 Explanation:
 
-Question: How difficult did you find DSCI 512 relative to the other courses in the MDS program? 
+Question: How difficult did you find DSCI 512 relative to the other courses in the MDS program?
 
 Options: 1) Much easier than average, 2) Somewhat easier than average, 3) Average, 4) Somewhat more difficult than average, 5) Much more difficult than average.
 
