@@ -16,7 +16,7 @@ Does the level of programming experience prior to the MDS program influence a pe
 
 **Options**: 1) Female, 2) Male
 
-#### 2.0 Confounding Variable: Math Skills
+#### 2.0 Confounding Variable: Math Skills (type: category)
 
 
 **Explanation**: Mathematics is an essential skill when it comes down to learning algorithms. Algorithms utilized everywhere to provide solutions to problems, but developing algorithms requires strong logical thinking abilities. Mathematics is the formal study of logical consequences which is extremely important when understanding algorithms. Therefore, it is evident that your ability in math may affect your level of programming experience, as well as the difficulty in learning DSCI 512.
@@ -26,7 +26,7 @@ Does the level of programming experience prior to the MDS program influence a pe
 **Options**: 1) Below average, 2) Average, 3) Above average
 
 
-#### 3.0 Confounding Variable: Friends who have jobs associated with programming
+#### 3.0 Confounding Variable: Friends who have jobs associated with programming (type: category)
 
 **Explanation**: Undoubtedly, friends are more likely to share common values and interests. Hence,
 if a MDS student have friends who work for IT companies, they are more likely to be affected and tend to have programming experience before the program. During the course, those friends can provide help and make the students less stressful when they have problems.
@@ -38,7 +38,7 @@ if a MDS student have friends who work for IT companies, they are more likely to
 
 #### Main Covariate: Previous programming experience
 
-**Explanation**:
+**Explanation**: 
 
 **Questions**:
 
@@ -62,11 +62,9 @@ and 2) Regression Test.???
 
 ### Discuss the aspects of the UBC Office of Research Ethics document on Using Online Surveys that are relevant to your proposed survey.
 
-<<<<<<< HEAD
+According to the Office of Research Ethics document, the collection of opinions and information are considered personal information if the information could be linked or associated with the individual. Such data, if collected through a survey, must not be stored outside of Canada and should be surveyed through tools hosted within Canada. Some of the variables that we thought about including in our survey were potentially considered "personal information", such as an individual's age or gender. However, due to the small population of our MDS program, it is definitely easy for this type of information to be identifying. As we are also taking a privacy and ethics course, we understand that these issues can bring many unnecessary problems. Ultimately, we decided to some variables, such as age, from our survey, regardless of whether they are confounding variables or not.
+
 
 # References:
 
 [male vs female]: https://www.dailymail.co.uk/g00/health/article-1286817/Women-prone-emotional-stress-men-sensitivity-hormone.html?i10c.ua=4&i10c.encReferrer=&i10c.dv=20
-=======
-According to the Office of Research Ethics document, the collection of opinions and information are considered personal information if the information could be linked or associated with the individual. Such data, if collected through a survey, must not be stored outside of Canada and should be surveyed through tools hosted within Canada. Some of the variables that we thought about including in our survey were potentially considered "personal information", such as an individual's age or gender. However, due to the small population of our MDS program, it is definitely easy for this type of information to be identifying. As we are also taking a privacy and ethics course, we understand that these issues can bring many unnecessary problems. Ultimately, we decided to some variables, such as age, from our survey, regardless of whether they are confounding variables or not.
->>>>>>> upstream/master
