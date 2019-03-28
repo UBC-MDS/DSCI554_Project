@@ -36,7 +36,7 @@ if a MDS student have friends who work for IT companies, they are more likely to
 **Options**: 1) No, 2) Yes
 
 
-#### Main Covariate: Previous programming experience (type: category)
+#### 4.0 Main Covariate: Previous programming experience (type: category)
 
 **Explanation**: The level of the previous experience is the main independent variable that we are interested in, which is potential reasons for variation of the self-perceived difficulty regarding 512.
 
@@ -44,13 +44,15 @@ if a MDS student have friends who work for IT companies, they are more likely to
 
 **Options**:(scale from 1 to 5, entry to expert) ???
 
-#### Outcome: Self-perceived difficulty regarding DSCI 512 (type: category)
+#### 5.0 Outcome: Self-perceived difficulty regarding DSCI 512 (type: category)
 
 **Explanation**: Self-perceived difficulty regarding DSCI 512 is the outcome whose variation is being studied.
 
 **Question**: How difficult did you find DSCI 512 relative to the other courses in the MDS program?
 
 **Options**: 1) Easier than average,  2) Average, 3) More difficult than average.
+
+<br>
 
 | Variable | Name | Type |
 |---|---|---|
@@ -60,7 +62,7 @@ if a MDS student have friends who work for IT companies, they are more likely to
 | Main Covariate | Previous programming experience | category |
 | Outcome | Self-perceived difficulty | category |
 
-_A summary table of variables in our analysis__
+_A summary table of variables in our analysis_
 
 ### Describe how you plan to analyze the survey results (e.g., what statistical test(s) do you plan to employ?).
 
@@ -89,4 +91,4 @@ In order to comply to the UBC Office of Research Ethics, we would provide a cove
 
 # References:
 
-[1]: https://www.dailymail.co.uk/g00/health/article-1286817/Women-prone-emotional-stress-men-sensitivity-hormone.html?i10c.ua=4&i10c.encReferrer=&i10c.dv=20
+1: https://www.dailymail.co.uk/g00/health/article-1286817/Women-prone-emotional-stress-men-sensitivity-hormone.html?i10c.ua=4&i10c.encReferrer=&i10c.dv=20
