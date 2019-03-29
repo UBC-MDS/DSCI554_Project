@@ -74,7 +74,7 @@ We plan to analyze the survey results in the following ways:
 
 1) Exploratory Data Analysis (EDA)
 - Summarize main characteristics of variables
-- Adjust assumption or method
+- Adjust assumptions or method
 
 2) Regression Test
 - Perform Ordered Logistic Regression on the results of the survey
