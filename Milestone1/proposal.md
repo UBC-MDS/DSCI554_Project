@@ -10,7 +10,7 @@ Does the level of programming experience prior to the MDS program influence a pe
 
 #### 1.0 Confounding Variable: Sex (type: category)
 
-**Explanation**: Human are specialized into male and female. The study reported that the number of men works in the IT industry is much greater than the number of women. In other words, man is more likely to have programming experience. On the other hand, woman tend to be reactive and sensitive to stress and bad news [1], which may affect the way woman perceives the level of difficulty when they take the course.
+**Explanation**: Sex is based on a biological classification system.  It has been included as a confounding variable because there is evidence to suggest that biological differences between males and female might affect a student's percieved difficuly of the couse.  For example, it is reported that on average, females are more prone to stress than males[1].  This is relevant to our question because, for example, difficulty may be more accutely percieved by an student who is more prone to stress.  
 
 **Questions**: Sex?
 
@@ -19,26 +19,25 @@ Does the level of programming experience prior to the MDS program influence a pe
 #### 2.0 Confounding Variable: Math Skills (type: category)
 
 
-**Explanation**: Mathematics is an essential skill when it comes down to learning algorithms. Algorithms utilized everywhere to provide solutions to problems, but developing algorithms requires strong logical thinking abilities. Mathematics is the formal study of logical consequences which is extremely important when understanding algorithms. Therefore, it is evident that your ability in math may affect your level of programming experience, as well as the difficulty in learning DSCI 512.
+**Explanation**: Mathematics is an essential skill when it comes to learning algorithms. Algorithms are utilized everywhere to provide solutions to problems, but developing algorithms requires strong logical thinking abilities. Mathematics is the formal study of logical consequences, which is extremely important when understanding algorithms. Therefore, it is evident that students' mathematical abilities may affect their level of programming experience, as well as difficulty in learning DSCI 512.
 
 **Questions**: Among all the math courses you have taken in the past, in general, how were your grades compared to others? For example, Calculus, Linear Algebra, Statistics.
 
 **Options**: 1) Below average, 2) Average, 3) Above average
 
 
-#### 3.0 Confounding Variable: Friends who have jobs associated with programming (type: category)
+#### 3.0 Confounding Variable: Friends or family who have jobs associated with programming (type: category)
 
-**Explanation**: Undoubtedly, friends are more likely to share common values and interests. Hence,
-if a MDS student have friends who work for IT companies, they are more likely to be affected and tend to have programming experience before the program. During the course, those friends can provide help and make the students less stressful when they have problems.
+**Explanation**: Undoubtedly, friends are more likely to share common values and interests. Hence, if a MDS student has friends or family who work for IT companies, they are more likely to be affected and tend to have programming experience before the program. During the course, those friends can provide help so that students are less stressed when they have problems.
 
-**Questions**: Do you have any friends who have jobs associated with programming?
+**Questions**: Do you have any friends or family who have jobs associated with programming?
 
 **Options**: 1) No, 2) Yes
 
 
 #### 4.0 Main Covariate: Previous programming experience (type: category)
 
-**Explanation**: The level of the previous experience is the main independent variable that we are interested in, which is potential reasons for variation of the self-perceived difficulty regarding 512.
+**Explanation**: The level of the previous experience is the main independent variable that we are interested in, which is a potential reason for variation of the self-perceived difficulty in 512.
 
 **Questions**: ???
 
@@ -91,4 +90,4 @@ In order to comply to the UBC Office of Research Ethics, we would provide a cove
 
 # References:
 
-1: https://www.dailymail.co.uk/g00/health/article-1286817/Women-prone-emotional-stress-men-sensitivity-hormone.html?i10c.ua=4&i10c.encReferrer=&i10c.dv=20
+1: https://www.ncbi.nlm.nih.gov/pubmed/23239826
