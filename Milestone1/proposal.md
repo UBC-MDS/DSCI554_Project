@@ -72,14 +72,15 @@ _A summary table of variables in our analysis_
 
 We plan to analyze the survey results in the following ways:
 
-1) exploratory data analysis (EDA)
+1) Exploratory Data Analysis (EDA)
 - Summarize main characteristics of variables
 - Adjust assumption or method
 
 2) Regression Test
-- Perform tests and analyze results
+- Perform Ordered Logistic Regression on the results of the survey
+- Perform the Likelihood Ratio Test on each regression model and evaluate the results
 - Determine the effect of covariates on outcome
-- Change test if necessary
+- Change our test if deemed necessary
 
 ## Discuss the aspects of the UBC Office of Research Ethics document on Using Online Surveys that are relevant to your proposed survey.
 
