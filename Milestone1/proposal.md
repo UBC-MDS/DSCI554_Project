@@ -100,3 +100,5 @@ To comply with the UBC Office of Research Ethics, we would provide a cover lette
 # References:
 
 1: https://www.ncbi.nlm.nih.gov/pubmed/23239826
+	
+2: https://www.ncwit.org/sites/default/files/resources/womenintech_facts_fullreport_05132016.pdf
