@@ -10,7 +10,7 @@ Does their level of programming experience prior to the MDS program influence a 
 
 ### 1.0 Confounding Variable: Sex (type: category)
 
-**Explanation**: Sex is based on a biological classification system.  It has been included as a confounding variable because there is evidence to suggest that biological differences between males and female might affect a student's perceived difficulty of the course.  For example, it is reported that on average, females are more prone to stress than males[1].  This is relevant to our question because, for example, difficulty may be more accurately perceived by a student who is more prone to stress.  
+**Explanation**: Sex is based on a biological classification system.  It has been included as a confounding variable because there is evidence to suggest that biological differences between males and females might affect a student's perceived difficulty of the course.  For example, it is reported that on average, females are more prone to stress than males[1].  This is relevant to our question because, for example, difficulty may be more acutely perceived by a student who is more prone to stress.  Females have historically been underrepresented in computing occupations[2] which suggests that they are also less likely to have programming experience.  Therefore, sex may affect both programming experience as well as perceived difficulty in DSCI 512.
 
 **Questions**: Sex?
 
