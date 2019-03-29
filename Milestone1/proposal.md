@@ -2,9 +2,9 @@
 
 ### Identify the question that your team in interested in answering with the survey. The aim of the survey should be to try to answer one specific and testable question. Examples of specific and testable questions include (you can use one of these if you really like them):
 
-DSCI 512 is a programming and algorithms course in the MDS program at UBC which introduces fundamental algorithms such as sorting and searching, as well as data structures. According to a poll done during the course, some students reflected that they have been experiencing a hard time with course materials and lab assignments. This leads to our survey question:
+DSCI 512 is a programming and algorithms course in the MDS program at UBC which introduces fundamental algorithms such as sorting and searching, as well as data structures. According to a poll done during the course, some students reported that they have been experiencing a hard time with course materials and lab assignments. This leads to our survey question:
 
-Does the level of programming experience prior to the MDS program influence a person's self-perceived difficulty regarding DSCI 512 (Algorithms and Data Structures)?
+Does the level of programming experience prior to the MDS program influence a person's self-perceived difficulty of DSCI 512 (Algorithms and Data Structures)?
 
 ### Identify the other questions you plan to ask in your survey to identify confounding variables and justify/explain why you plan to include them.
 
