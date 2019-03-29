@@ -16,7 +16,7 @@ Does their level of programming experience prior to the MDS program influence a 
 
 **Options**: 1) Female, 2) Male
 
-### 2.0 Confounding Variable: Math Skills (type: category)
+### 2.0 Confounding Variable: Math Skills (type: ordinal)
 
 
 **Explanation**: Mathematics is an essential skill when it comes to learning algorithms. Algorithms are utilized everywhere to provide solutions to problems, but developing algorithms requires strong logical thinking abilities. Mathematics is the formal study of logical consequences, which is extremely important when understanding algorithms. Therefore, it is evident that students' mathematical abilities may affect their level of programming experience, as well as difficulty in learning DSCI 512.
@@ -35,7 +35,7 @@ Does their level of programming experience prior to the MDS program influence a 
 **Options**: 1) No, 2) Yes
 
 
-### 4.0 Main Covariate: Previous programming experience (type: category)
+### 4.0 Main Covariate: Previous programming experience (type: ordinal)
 
 **Explanation**: The level of the previous programming experience is a potential reason for variation of the self-perceived difficulty regarding DSCI 512.
 
@@ -44,7 +44,7 @@ Does their level of programming experience prior to the MDS program influence a 
 **Options**: 1) None, 2) Less than 100 hours, 3) Less than 1000 hours, 4) More than 1000 hours
 
 
-### 5.0 Outcome: Self-perceived difficulty regarding DSCI 512 (type: category)
+### 5.0 Outcome: Self-perceived difficulty regarding DSCI 512 (type: ordinal)
 
 **Explanation**: Self-perceived difficulty regarding DSCI 512 is the outcome whose variation is being studied.
 
@@ -57,10 +57,10 @@ Does their level of programming experience prior to the MDS program influence a 
 | Variable | Name | Type |
 |---|---|---|
 | Confounder | Sex | category |
-| Confounder | Math Skills | category |
+| Confounder | Math Skills | ordinal |
 | Confounder | Friends who have jobs associated with programming | category |
-| Main Covariate | Previous programming experience | category |
-| Outcome | Self-perceived difficulty | category |
+| Main Covariate | Previous programming experience | ordinal |
+| Outcome | Self-perceived difficulty | ordinal |
 
 _A summary table of variables in our analysis_
 
@@ -100,5 +100,5 @@ To comply with the UBC Office of Research Ethics, we would provide a cover lette
 # References:
 
 1: https://www.ncbi.nlm.nih.gov/pubmed/23239826
-	
+
 2: https://www.ncwit.org/sites/default/files/resources/womenintech_facts_fullreport_05132016.pdf
