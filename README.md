@@ -7,7 +7,7 @@ Latest Update Date: 2019 Mar.
 
 | Name  | Slack Handle | Github.com |
 | :------: | :---: | :----------: |
-| Paul Vial | |||
+| Paul Vial | `@PAUL VIAL` | `@Pall-V`||
 | Patrick Tung | `@Patrick Tung` | `@tung_patrick` |
 | Mengda Yu | `@Mengda(Albert) Yu` | `@mru4913` |
 
