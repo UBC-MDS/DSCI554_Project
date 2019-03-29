@@ -8,8 +8,15 @@ Does their level of programming experience prior to the MDS program influence a 
 
 ## Identify the other questions you plan to ask in your survey to identify confounding variables and justify/explain why you plan to include them.
 
+### 1.0 Confounding Variable: Sex (type: category)
 
-### 1.0 Confounding Variable: Math Skills (type: category)
+**Explanation**: Sex is based on a biological classification system.  It has been included as a confounding variable because there is evidence to suggest that biological differences between males and females might affect a student's perceived difficulty of the course.  For example, it is reported that on average, females are more prone to stress than males[1].  This is relevant to our question because, for example, difficulty may be more acutely perceived by a student who is more prone to stress.  Females have historically been underrepresented in computing occupations[2] which suggests that they are also less likely to have programming experience.  Therefore, sex may affect both programming experience as well as perceived difficulty in DSCI 512.
+
+**Questions**: Sex?
+
+**Options**: 1) Female, 2) Male
+
+### 2.0 Confounding Variable: Math Skills (type: category)
 
 
 **Explanation**: Mathematics is an essential skill when it comes to learning algorithms. Algorithms are utilized everywhere to provide solutions to problems, but developing algorithms requires strong logical thinking abilities. Mathematics is the formal study of logical consequences, which is extremely important when understanding algorithms. Therefore, it is evident that students' mathematical abilities may affect their level of programming experience, as well as difficulty in learning DSCI 512.
@@ -19,7 +26,7 @@ Does their level of programming experience prior to the MDS program influence a 
 **Options**: 1) Below average, 2) Average, 3) Above average
 
 
-### 2.0 Confounding Variable: Friends or family who have jobs associated with programming (type: category)
+### 3.0 Confounding Variable: Friends or family who have jobs associated with programming (type: category)
 
 **Explanation**: Undoubtedly, friends are more likely to share common values and interests. Hence, if an MDS student has friends or family who work for IT companies, they are more likely to be affected and tend to have programming experience before the program. During the course, those friends could provide help so that students are less stressed when they have problems and experience less difficulty in the course.
 
@@ -28,16 +35,16 @@ Does their level of programming experience prior to the MDS program influence a 
 **Options**: 1) No, 2) Yes
 
 
-### 3.0 Main Covariate: Previous programming experience (type: category)
+### 4.0 Main Covariate: Previous programming experience (type: category)
 
-**Explanation**: The main independent variable that we are interested in is the level of the previous programming experience, which is a potential reason for variation of the self-perceived difficulty in 512.
+**Explanation**: The level of the previous programming experience is a potential reason for variation of the self-perceived difficulty regarding DSCI 512.
 
 **Questions**: How much programming experience did you have prior to the MDS program?  Please select the highest level that applies to you.
 
 **Options**: 1) None, 2) Less than 100 hours, 3) Less than 1000 hours, 4) More than 1000 hours
 
 
-### 4.0 Outcome: Self-perceived difficulty regarding DSCI 512 (type: category)
+### 5.0 Outcome: Self-perceived difficulty regarding DSCI 512 (type: category)
 
 **Explanation**: Self-perceived difficulty regarding DSCI 512 is the outcome whose variation is being studied.
 
@@ -45,15 +52,7 @@ Does their level of programming experience prior to the MDS program influence a 
 
 **Options**: 1) Easier than average,  2) Average, 3) More difficult than average.
 
-### 5.0 Confounding Variable: Sex (type: category)
-
-**Explanation**: Sex is based on a biological classification system.  It has been included as a confounding variable because there is evidence to suggest that biological differences between males and females might affect a student's perceived difficulty of the course.  For example, it is reported that on average, females are more prone to stress than males[1].  This is relevant to our question because, for example, difficulty may be more acutely perceived by a student who is more prone to stress.  Females have historically been underrepresented in computing occupations[2] which suggests that they are also less likely to have programming experience.  Therefore, sex may affect both programming experience as well as perceived difficulty in DSCI 512.
-
-**Questions**: Sex?
-
-**Options**: 1) Female, 2) Male
-
-<br>
+</br>
 
 | Variable | Name | Type |
 |---|---|---|
@@ -71,8 +70,16 @@ _A summary table of variables in our analysis_
 
 **Alternative hypothesis**: The level of programming experience prior to the MDS program influences a person's self-perceived difficulty regarding DSCI 512.
 
-We plane to analyze the survey results in the following ways: 1) exploratory data analysis (EDA)
-and 2) Regression Test.???
+We plan to analyze the survey results in the following ways:
+
+1) exploratory data analysis (EDA)
+- Summarize main characteristics of variables
+- Adjust assumption or method
+
+2) Regression Test
+- Perform tests and analyze results
+- Determine the effect of covariates on outcome
+- Change test if necessary
 
 ## Discuss the aspects of the UBC Office of Research Ethics document on Using Online Surveys that are relevant to your proposed survey.
 
@@ -93,5 +100,3 @@ To comply with the UBC Office of Research Ethics, we would provide a cover lette
 # References:
 
 1: https://www.ncbi.nlm.nih.gov/pubmed/23239826
-
-2: https://www.ncwit.org/sites/default/files/resources/womenintech_facts_fullreport_05132016.pdf
