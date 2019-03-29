@@ -37,7 +37,7 @@ Does their level of programming experience prior to the MDS program influence a 
 
 ### 4.0 Main Covariate: Previous programming experience (type: category)
 
-**Explanation**: The main independent variable that we are interested in is the level of the previous programming experience, which is a potential reason for variation of the self-perceived difficulty in 512.
+**Explanation**: The level of the previous programming experience is a potential reason for variation of the self-perceived difficulty regarding DSCI 512.
 
 **Questions**: How much programming experience did you have prior to the MDS program?  Please select the highest level that applies to you.
 
@@ -52,7 +52,7 @@ Does their level of programming experience prior to the MDS program influence a 
 
 **Options**: 1) Easier than average,  2) Average, 3) More difficult than average.
 
-<br>
+</br>
 
 | Variable | Name | Type |
 |---|---|---|
@@ -70,8 +70,16 @@ _A summary table of variables in our analysis_
 
 **Alternative hypothesis**: The level of programming experience prior to the MDS program influences a person's self-perceived difficulty regarding DSCI 512.
 
-We plane to analyze the survey results in the following ways: 1) exploratory data analysis (EDA)
-and 2) Regression Test.???
+We plan to analyze the survey results in the following ways:
+
+1) exploratory data analysis (EDA)
+- Summarize main characteristics of variables
+- Adjust assumption or method
+
+2) Regression Test
+- Perform tests and analyze results
+- Determine the effect of covariates on outcome
+- Change test if necessary
 
 ## Discuss the aspects of the UBC Office of Research Ethics document on Using Online Surveys that are relevant to your proposed survey.
 
