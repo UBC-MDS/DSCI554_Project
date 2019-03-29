@@ -37,11 +37,12 @@ Does the level of programming experience prior to the MDS program influence a pe
 
 #### 4.0 Main Covariate: Previous programming experience (type: category)
 
-**Explanation**: The level of the previous experience is the main independent variable that we are interested in, which is a potential reason for variation of the self-perceived difficulty in 512.
+**Explanation**: The main independent variable that we are interested in is the level of the previous programming experience, which is a potential reason for variation of the self-perceived difficulty in 512.
 
-**Questions**: ???
+**Questions**: How much programming experiece did you have prior to the MDS program?  Please select the highest level that applies to you.
 
-**Options**:(scale from 1 to 5, entry to expert) ???
+**Options**: 1) None, 2) Less than 100 hours, 3) Less than 1000 hours, 4) More than 1000 hours
+
 
 #### 5.0 Outcome: Self-perceived difficulty regarding DSCI 512 (type: category)
 
@@ -74,7 +75,7 @@ and 2) Regression Test.???
 
 ### Discuss the aspects of the UBC Office of Research Ethics document on Using Online Surveys that are relevant to your proposed survey.
 
-According to the Office of Research Ethics document, the collection of opinions and information are considered personal information if the information could be linked or associated with the individual. Such data, if collected through a survey, must not be stored outside of Canada and should be surveyed through tools hosted within Canada. Some of the variables that we thought about including in our survey were potentially considered "personal information", such as an individual's age or gender. However, due to the small population of our MDS program, it is definitely easy for this type of information to be identifying. As we are also taking a privacy and ethics course, we understand that these issues can bring many unnecessary problems. Ultimately, we decided to some variables, such as age, from our survey, regardless of whether they are confounding variables or not.
+According to the Office of Research Ethics document, the collection of opinions and information are considered personal information if the information could be linked or associated with the individual. Such data, if collected through a survey, must not be stored outside of Canada and should be surveyed through tools hosted within Canada. Some of the variables that we thought about including in our survey were potentially "personal information", such as an individual's age or gender. Due to the small population of our MDS program, it is definitely easy for this type of information to be identifying. As we are also taking a privacy and ethics course, we understand that these issues can bring many unnecessary problems. Ultimately, we decided to some variables, such as age, from our survey, regardless of whether they are confounding variables or not.
 
 In order to comply to the UBC Office of Research Ethics, we would provide a cover letter (consent form) to all survey participants. The cover letter would include:
 
