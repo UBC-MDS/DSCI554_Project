@@ -20,7 +20,7 @@ We defined null hypothesis and alternative hypothesis as following:
 
 **Alternative hypothesis**: The level of programming experience prior to the MDS program influences a person's self-perceived difficulty regarding DSCI 512.
 
-In this project, we will design several survey questions and collect information from other MDS students, 554 TAs and lab instructor. The process will follow the guideline of [UBC Office of Research Ethics document on Using Online Surveys](https://ethics.research.ubc.ca/sites/ore.ubc.ca/files/documents/Online_Survey-GN.pdf). We will also perform regression tests to identify possible confounding variables and to further determine the significance of the level of programming experience prior to the MDS program. Last, we will discuss the results and findings of our survey.
+In this project, we will design several survey questions and collect information from other MDS students, 554 TAs and lab instructor. The process will follow the guidelines of the [UBC Office of Research Ethics document on Using Online Surveys](https://ethics.research.ubc.ca/sites/ore.ubc.ca/files/documents/Online_Survey-GN.pdf). We will also perform regression tests to identify possible confounding variables and to further determine the significance of the level of programming experience prior to the MDS program. Last, we will discuss the results and findings of our survey.
 
 ### Project Progress
 
