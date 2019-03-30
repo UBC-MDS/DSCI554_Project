@@ -12,9 +12,7 @@ Latest Update Date: 2019 Mar.
 
 # Overview
 
-DSCI 512 is a programming and algorithms course in the MDS program at UBC which introduces fundamental algorithms such as sorting and searching, as well as data structures. According to a poll done during the course, some students reported that they had been experiencing a hard time with course materials and lab assignments.
-
-This project is to analyze whether the level of programming experience prior to the MDS program affect an MDS student's self-perceived difficulty of DSCI 512 materials.
+DSCI 512 is a programming and algorithms course in the MDS program at UBC which introduces fundamental algorithms such as sorting and searching, as well as data structures. According to a poll done during the course, some students reported that they had been experiencing a hard time with course materials and lab assignments.This project is to analyze whether the level of programming experience prior to the MDS program affects an MDS student's self-perceived difficulty of DSCI 512 materials.
 
 We defined null hypothesis and alternative hypothesis as following:
 
