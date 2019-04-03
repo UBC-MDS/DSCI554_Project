@@ -6,19 +6,82 @@ output: github_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+suppressPackageStartupMessages(library("tidyverse"))
 ```
 
 
-# 1.0 Clear data 
+# 1.0 Clean data 
+
+```{r}
+# Read data
+data <- suppressMessages(read_csv("./data/experimental_data.csv", skip = 2))
+
+# Select data 
+data <-  
+  data %>% 
+  select(18:22)
+
+# Rename columns 
+names(data) <- c("sex", "math_skill", "friend_with_prog", "prog_exp", "difficulty")
+
+# factorize variable in the data
+clean_data <- 
+  data %>%
+  mutate(sex = as_factor(sex),
+         math_skill = as_factor(math_skill,
+                                levels=c("Below Average",
+                                         "Average",
+                                         "Above Average"), ordered=TRUE),
+         friend_with_prog = as_factor(friend_with_prog),
+         prog_exp = as_factor(prog_exp,
+                              levels=c("None",
+                                       "Less than 100 hours",
+                                       "Less than 1000 hours",
+                                       "More than 1000 hours"), ordered=TRUE),
+         difficulty = as_factor(difficulty,
+                                levels=c("Easier than average",
+                                         "Average",
+                                         "More difficult than average"),
+                                ordered=TRUE)
+  )
+```
 
 # 2.0 EDA
 
 ## 2.1 EDA-1
 
+```{r}
+clean_data %>%
+  ggplot() + 
+  theme_bw() +
+  labs(x = "Self-preceived Diffculty",
+    # y = "y",
+    title = "The bar plot of self-preceived diffculty of DSIC512") +
+  theme(plot.title = element_text(size = 13, face = "bold", hjust = 0.5)) + 
+  geom_bar(aes(difficulty)) 
+```
+
+
 ## 2.1 EDA-2
+
+```{r}
+clean_data %>%
+  ggplot() + 
+  theme_bw() +
+  labs(x = "Programming experience prior to the program",
+    # y = "y",
+    title = "The bar plot of self-preceived diffculty of DSIC512") +
+  theme(plot.title = element_text(size = 13, face = "bold", hjust = 0.5)) + 
+  geom_bar(aes(prog_exp)) 
+```
+
 
 ## 2.1 EDA-3
 
 ## 2.1 EDA-4
+
+```{r}
+
+```
 
 ## Discussion
