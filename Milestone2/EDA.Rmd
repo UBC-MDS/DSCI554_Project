@@ -56,7 +56,7 @@ clean_data %>%
   theme_bw() +
   labs(x = "Self-preceived Diffculty",
     # y = "y",
-    title = "The bar plot of self-preceived diffculty of DSIC512") +
+    title = "Self-preceived diffculty of DSCI 512") +
   theme(plot.title = element_text(size = 13, face = "bold", hjust = 0.5)) + 
   geom_bar(aes(difficulty)) 
 ```
@@ -70,7 +70,7 @@ clean_data %>%
   theme_bw() +
   labs(x = "Programming experience prior to the program",
     # y = "y",
-    title = "The bar plot of self-preceived diffculty of DSIC512") +
+    title = "Level of programming experience prior to the program") +
   theme(plot.title = element_text(size = 13, face = "bold", hjust = 0.5)) + 
   geom_bar(aes(prog_exp)) 
 ```
@@ -84,7 +84,7 @@ clean_data %>%
   theme_bw() +
   labs(x = "Self-preceived difficulty",
     # y = "y",
-    title = "The bar plot of Self-preceived difficulty VS Sex") +
+    title = "Self-perceived difficulty vs. Sex") +
   theme(plot.title = element_text(size = 13, face = "bold", hjust = 0.5)) + 
   geom_bar(aes(x = difficulty, fill = sex), position = "dodge") 
 ```
@@ -93,11 +93,17 @@ clean_data %>%
 ## 2.1 EDA-4
 
 ```{r}
-clean_data %>% ggplot(aes(difficulty, prog_exp)) + 
-  geom_bin2d() + 
+clean_data %>% ggplot(aes(difficulty, prog_exp)) +
+  geom_bin2d() +
   labs(x = "Difficulty", y = "Programming Experience",
-    title = "Heatmap of Programming Experience vs Difficulty") +
-  theme(plot.title = element_text(size = 13, face = "bold", hjust = 0.5))
+       title = "Heatmap of Programming Experience vs. Difficulty") +
+  theme(plot.title = element_text(size = 13, face = "bold", hjust = 0.5)) +
+  coord_fixed() +
+  scale_x_discrete(
+    labels = function(difficulty)
+      str_wrap(difficulty, width = 14)
+  ) +
+  scale_fill_continuous(breaks = c(1, 5, 9))
 ```
 
 ## Discussion
