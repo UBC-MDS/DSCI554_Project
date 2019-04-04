@@ -78,10 +78,26 @@ clean_data %>%
 
 ## 2.1 EDA-3
 
+```{r}
+clean_data %>%
+  ggplot() + 
+  theme_bw() +
+  labs(x = "Self-preceived difficulty",
+    # y = "y",
+    title = "The bar plot of Self-preceived difficulty VS Sex") +
+  theme(plot.title = element_text(size = 13, face = "bold", hjust = 0.5)) + 
+  geom_bar(aes(x = difficulty, fill = sex), position = "dodge") 
+```
+
+
 ## 2.1 EDA-4
 
 ```{r}
-
+clean_data %>% ggplot(aes(difficulty, prog_exp)) + 
+  geom_bin2d() + 
+  labs(x = "Difficulty", y = "Programming Experience",
+    title = "Heatmap of Programming Experience vs Difficulty") +
+  theme(plot.title = element_text(size = 13, face = "bold", hjust = 0.5))
 ```
 
 ## Discussion
