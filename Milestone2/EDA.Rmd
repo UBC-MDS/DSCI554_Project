@@ -106,4 +106,3 @@ clean_data %>% ggplot(aes(difficulty, prog_exp)) +
   scale_fill_continuous(breaks = c(1, 5, 9))
 ```
 
-## Discussion
