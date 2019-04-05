@@ -1,31 +1,22 @@
----
-title: "Milestone 2 - EDA"
-date: \`r format(Sys.Date(), " %Y-%m-%d")`\
-author: "Author: Patrick Tung, PAUL VIAL and  Mengda (Albert) Yu"
-output: github_document
----
+Milestone 2 - EDA
+================
+Author: Patrick Tung, PAUL VIAL and Mengda (Albert) Yu
+ 2019-04-04
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-suppressPackageStartupMessages(library("tidyverse"))
-```
-
-
-# 1.0 Clean data 
-
+1.0 Clean data
+==============
 
 In this milestone, we collected 56 observations from other MDS students, 554 TAs and lab instructor. Each observation contains five variables, including the followings in the table.
 
-| Variable | Name | Type |
-|---|---|---|
-| Confounder | Sex | category |
-| Confounder | Math Skills | ordinal |
-| Confounder | Friends who have jobs associated with programming | category |
-| Main Covariate | Previous programming experience | ordinal |
-| Outcome | Self-perceived difficulty | ordinal |
+| Variable       | Name                                              | Type     |
+|----------------|---------------------------------------------------|----------|
+| Confounder     | Sex                                               | category |
+| Confounder     | Math Skills                                       | ordinal  |
+| Confounder     | Friends who have jobs associated with programming | category |
+| Main Covariate | Previous programming experience                   | ordinal  |
+| Outcome        | Self-perceived difficulty                         | ordinal  |
 
-
-```{r}
+``` r
 # Read data
 data <- suppressMessages(read_csv("./data/data.csv", skip = 2))
 
@@ -60,17 +51,29 @@ clean_data <-
 
 # Get the size of the data
 dim(clean_data)
+```
 
+    ## [1] 56  5
 
+``` r
 # Get the strcture of the data
 str(clean_data)
 ```
 
-# 2.0 EDA
+    ## Classes 'tbl_df', 'tbl' and 'data.frame':    56 obs. of  5 variables:
+    ##  $ sex             : Factor w/ 2 levels "Female","Male": 1 1 2 1 2 2 1 2 2 2 ...
+    ##  $ math_skill      : Factor w/ 3 levels "Above Average",..: 1 1 1 1 1 2 2 1 1 1 ...
+    ##  $ friend_with_prog: Factor w/ 2 levels "Yes","No": 1 1 1 2 1 2 1 2 1 2 ...
+    ##  $ prog_exp        : Factor w/ 4 levels "None","Less than 1000 hours",..: 1 2 3 3 2 2 4 3 4 3 ...
+    ##  $ difficulty      : Factor w/ 3 levels "Easier than average",..: 1 2 2 2 3 3 1 2 2 2 ...
 
-## 2.1 EDA-1
+2.0 EDA
+=======
 
-```{r}
+2.1 EDA-1
+---------
+
+``` r
 clean_data %>%
   ggplot() + 
   theme_bw() +
@@ -81,10 +84,12 @@ clean_data %>%
   geom_bar(aes(difficulty)) 
 ```
 
+![](EDA_files/figure-markdown_github/unnamed-chunk-2-1.png)
 
-## 2.1 EDA-2
+2.1 EDA-2
+---------
 
-```{r}
+``` r
 clean_data %>%
   ggplot() + 
   theme_bw() +
@@ -95,10 +100,12 @@ clean_data %>%
   geom_bar(aes(prog_exp)) 
 ```
 
+![](EDA_files/figure-markdown_github/unnamed-chunk-3-1.png)
 
-## 2.1 EDA-3
+2.1 EDA-3
+---------
 
-```{r}
+``` r
 clean_data %>%
   ggplot() + 
   theme_bw() +
@@ -109,10 +116,12 @@ clean_data %>%
   geom_bar(aes(x = difficulty, fill = sex), position = "dodge") 
 ```
 
+![](EDA_files/figure-markdown_github/unnamed-chunk-4-1.png)
 
-## 2.1 EDA-4
+2.1 EDA-4
+---------
 
-```{r}
+``` r
 clean_data %>% ggplot(aes(difficulty, prog_exp)) +
   geom_bin2d() +
   theme_bw() +
@@ -127,3 +136,4 @@ clean_data %>% ggplot(aes(difficulty, prog_exp)) +
   scale_fill_continuous(breaks = c(1, 5, 9))
 ```
 
+![](EDA_files/figure-markdown_github/unnamed-chunk-5-1.png)
