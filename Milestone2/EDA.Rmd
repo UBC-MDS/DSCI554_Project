@@ -7,12 +7,12 @@ output: github_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-suppressPackageStartupMessages(library("tidyverse"))
+suppressPackageStartupMessages(library(tidyverse))
+suppressPackageStartupMessages(library(knitr))
 ```
 
 
-# 1.0 Clean data 
-
+# 1.0 Data Wrangling  
 
 In this milestone, we collected 56 observations from other MDS students, 554 TAs and lab instructor. Each observation contains five variables, including the followings in the table.
 
@@ -41,29 +41,48 @@ names(data) <- c("sex", "math_skill", "friend_with_prog", "prog_exp", "difficult
 clean_data <- 
   data %>%
   mutate(sex = as_factor(sex),
-         math_skill = as_factor(math_skill,
+         math_skill = factor(math_skill,
                                 levels=c("Below Average",
                                          "Average",
                                          "Above Average"), ordered=TRUE),
          friend_with_prog = as_factor(friend_with_prog),
-         prog_exp = as_factor(prog_exp,
+         prog_exp = factor(prog_exp,
                               levels=c("None",
                                        "Less than 100 hours",
                                        "Less than 1000 hours",
                                        "More than 1000 hours"), ordered=TRUE),
-         difficulty = as_factor(difficulty,
+         difficulty = factor(difficulty,
                                 levels=c("Easier than average",
                                          "Average",
                                          "More difficult than average"),
                                 ordered=TRUE)
   )
 
+```
+
+
+```{r}
 # Get the size of the data
 dim(clean_data)
 
 
 # Get the strcture of the data
 str(clean_data)
+```
+
+
+```{r}
+# cross classication counts for difficulty by sex 
+kable(table(clean_data$difficulty, clean_data$sex))
+
+# cross classication counts for difficulty by math_skill 
+kable(table(clean_data$difficulty, clean_data$math_skill))
+
+# cross classication counts for difficulty by friend_with_prog 
+kable(table(clean_data$difficulty, clean_data$friend_with_prog))
+
+# cross classication counts for difficulty by prog_exp 
+kable(table(clean_data$difficulty, clean_data$prog_exp))
 ```
 
 # 2.0 EDA
@@ -82,7 +101,7 @@ clean_data %>%
 ```
 
 
-## 2.1 EDA-2
+## 2.2 EDA-2
 
 ```{r}
 clean_data %>%
@@ -96,7 +115,7 @@ clean_data %>%
 ```
 
 
-## 2.1 EDA-3
+## 2.3 EDA-3
 
 ```{r}
 clean_data %>%
@@ -110,7 +129,7 @@ clean_data %>%
 ```
 
 
-## 2.1 EDA-4
+## 2.4 EDA-4
 
 ```{r}
 clean_data %>% ggplot(aes(difficulty, prog_exp)) +
