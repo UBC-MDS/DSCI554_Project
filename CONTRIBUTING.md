@@ -66,5 +66,8 @@ If applied, this commit will <your subject line here>
 ### Example of a commit for update
 
 ```
-git commit -m "Update <file> with <thing>"
+git commit -m "Update <file> with <action>"
+git commit -m "Create <file>"
+git commit -m "Delete <file>"
+git commit -m "Add <file> for <purpose>"
 ```
