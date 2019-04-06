@@ -28,3 +28,4 @@ In this project, we will design several survey questions and collect information
 | :------: | :---: |
 | Milestone 1 | [Proposal](./Milestone1/proposal.md) |
 | Survey | [Survey](https://ubc.ca1.qualtrics.com/jfe/form/SV_abNhXIL4B4pM6sl) |
+| Milestone 2 | [EDA](./Milestone2/EDA.md) |
