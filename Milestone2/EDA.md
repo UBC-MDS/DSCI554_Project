@@ -1,10 +1,10 @@
 Milestone 2 - EDA
 ================
 Author: Patrick Tung, PAUL VIAL and Mengda (Albert) Yu
- 2019-04-04
+ 2019-04-05
 
-1.0 Clean data
-==============
+1.0 Data Wrangling
+==================
 
 In this milestone, we collected 56 observations from other MDS students, 554 TAs and lab instructor. Each observation contains five variables, including the followings in the table.
 
@@ -32,23 +32,25 @@ names(data) <- c("sex", "math_skill", "friend_with_prog", "prog_exp", "difficult
 clean_data <- 
   data %>%
   mutate(sex = as_factor(sex),
-         math_skill = as_factor(math_skill,
+         math_skill = factor(math_skill,
                                 levels=c("Below Average",
                                          "Average",
                                          "Above Average"), ordered=TRUE),
          friend_with_prog = as_factor(friend_with_prog),
-         prog_exp = as_factor(prog_exp,
+         prog_exp = factor(prog_exp,
                               levels=c("None",
                                        "Less than 100 hours",
                                        "Less than 1000 hours",
                                        "More than 1000 hours"), ordered=TRUE),
-         difficulty = as_factor(difficulty,
+         difficulty = factor(difficulty,
                                 levels=c("Easier than average",
                                          "Average",
                                          "More difficult than average"),
                                 ordered=TRUE)
   )
+```
 
+``` r
 # Get the size of the data
 dim(clean_data)
 ```
@@ -62,10 +64,54 @@ str(clean_data)
 
     ## Classes 'tbl_df', 'tbl' and 'data.frame':    56 obs. of  5 variables:
     ##  $ sex             : Factor w/ 2 levels "Female","Male": 1 1 2 1 2 2 1 2 2 2 ...
-    ##  $ math_skill      : Factor w/ 3 levels "Above Average",..: 1 1 1 1 1 2 2 1 1 1 ...
+    ##  $ math_skill      : Ord.factor w/ 3 levels "Below Average"<..: 3 3 3 3 3 2 2 3 3 3 ...
     ##  $ friend_with_prog: Factor w/ 2 levels "Yes","No": 1 1 1 2 1 2 1 2 1 2 ...
-    ##  $ prog_exp        : Factor w/ 4 levels "None","Less than 1000 hours",..: 1 2 3 3 2 2 4 3 4 3 ...
-    ##  $ difficulty      : Factor w/ 3 levels "Easier than average",..: 1 2 2 2 3 3 1 2 2 2 ...
+    ##  $ prog_exp        : Ord.factor w/ 4 levels "None"<"Less than 100 hours"<..: 1 3 2 2 3 3 4 2 4 2 ...
+    ##  $ difficulty      : Ord.factor w/ 3 levels "Easier than average"<..: 1 2 2 2 3 3 1 2 2 2 ...
+
+``` r
+# cross classication counts for difficulty by sex 
+kable(table(clean_data$difficulty, clean_data$sex))
+```
+
+|                             |  Female|  Male|
+|-----------------------------|-------:|-----:|
+| Easier than average         |       6|     3|
+| Average                     |       8|    17|
+| More difficult than average |       9|    13|
+
+``` r
+# cross classication counts for difficulty by math_skill 
+kable(table(clean_data$difficulty, clean_data$math_skill))
+```
+
+|                             |  Below Average|  Average|  Above Average|
+|-----------------------------|--------------:|--------:|--------------:|
+| Easier than average         |              1|        5|              3|
+| Average                     |              1|        3|             21|
+| More difficult than average |              1|        6|             15|
+
+``` r
+# cross classication counts for difficulty by friend_with_prog 
+kable(table(clean_data$difficulty, clean_data$friend_with_prog))
+```
+
+|                             |  Yes|   No|
+|-----------------------------|----:|----:|
+| Easier than average         |    6|    3|
+| Average                     |   21|    4|
+| More difficult than average |   13|    9|
+
+``` r
+# cross classication counts for difficulty by prog_exp 
+kable(table(clean_data$difficulty, clean_data$prog_exp))
+```
+
+|                             |  None|  Less than 100 hours|  Less than 1000 hours|  More than 1000 hours|
+|-----------------------------|-----:|--------------------:|---------------------:|---------------------:|
+| Easier than average         |     3|                    2|                     1|                     3|
+| Average                     |     1|                    8|                     9|                     7|
+| More difficult than average |     5|                    6|                     6|                     5|
 
 2.0 EDA
 =======
@@ -84,9 +130,9 @@ clean_data %>%
   geom_bar(aes(difficulty)) 
 ```
 
-![](EDA_files/figure-markdown_github/unnamed-chunk-2-1.png)
+![](EDA_files/figure-markdown_github/unnamed-chunk-4-1.png)
 
-2.1 EDA-2
+2.2 EDA-2
 ---------
 
 ``` r
@@ -100,9 +146,9 @@ clean_data %>%
   geom_bar(aes(prog_exp)) 
 ```
 
-![](EDA_files/figure-markdown_github/unnamed-chunk-3-1.png)
+![](EDA_files/figure-markdown_github/unnamed-chunk-5-1.png)
 
-2.1 EDA-3
+2.3 EDA-3
 ---------
 
 ``` r
@@ -116,9 +162,9 @@ clean_data %>%
   geom_bar(aes(x = difficulty, fill = sex), position = "dodge") 
 ```
 
-![](EDA_files/figure-markdown_github/unnamed-chunk-4-1.png)
+![](EDA_files/figure-markdown_github/unnamed-chunk-6-1.png)
 
-2.1 EDA-4
+2.4 EDA-4
 ---------
 
 ``` r
@@ -136,4 +182,4 @@ clean_data %>% ggplot(aes(difficulty, prog_exp)) +
   scale_fill_continuous(breaks = c(1, 5, 9))
 ```
 
-![](EDA_files/figure-markdown_github/unnamed-chunk-5-1.png)
+![](EDA_files/figure-markdown_github/unnamed-chunk-7-1.png)
