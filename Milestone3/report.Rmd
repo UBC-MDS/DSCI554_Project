@@ -1,0 +1,191 @@
+---
+title: "Milestone 3 - Report"
+date: \`r format(Sys.Date(), " %Y-%m-%d")`\
+author: "Author: Patrick Tung, PAUL VIAL and  Mengda (Albert) Yu"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+suppressPackageStartupMessages(library(MASS))
+suppressPackageStartupMessages(library(tidyverse))
+suppressPackageStartupMessages(library(knitr))
+suppressPackageStartupMessages(library(lmtest))
+```
+
+```{r prepare data, echo=FALSE}
+# Read data
+data <- suppressMessages(read_csv("../Milestone2/data/data.csv", skip = 2))
+
+# Select data 
+data <-  
+  data %>% 
+  dplyr::select(18:22)
+
+# Rename columns 
+names(data) <- c("sex", "math_skill", "friend_with_prog", "prog_exp", "difficulty")
+
+# factorize variable in the data
+clean_data <- 
+  data %>%
+  mutate(sex = as_factor(sex),
+         math_skill = factor(math_skill,
+                                levels=c("Below Average",
+                                         "Average",
+                                         "Above Average"), ordered=TRUE),
+         friend_with_prog = as_factor(friend_with_prog),
+         prog_exp = factor(prog_exp,
+                              levels=c("None",
+                                       "Less than 100 hours",
+                                       "Less than 1000 hours",
+                                       "More than 1000 hours"), ordered=TRUE),
+         difficulty = factor(difficulty,
+                                levels=c("Easier than average",
+                                         "Average",
+                                         "More difficult than average"),
+                                ordered=TRUE)
+  )
+
+```
+
+# Introduction 
+
+
+> survey topic + question
+
+> Null hypothesis: The level of programming experience prior to the MDS program does not influence a person's self-perceived difficulty regarding DSCI 512.
+
+> Alternative hypothesis: The level of programming experience prior to the MDS program influences a person's self-perceived difficulty regarding DSCI 512.
+
+
+# Data description 
+
+We collected 56 observations from other MDS students, 554 TAs and lab instructor for self-perceived difficulty of DSCI 512 course. 
+
+| Variable | Name | Type | Description |
+|---|---|---|---|
+| Confounder | `sex` | category | Female or Male |
+| Confounder | `math_skill` | ordinal | self-reported math skills (Below average, Average, Above average) |
+| Confounder | `friend_with_prog` |  category | Friends who have jobs associated with programming (No, Yes)|
+| Main Covariate | `prog_exp` | ordinal | Previous programming experience prior to the MDS in hour (None, Less than 100 hours, Less than 1000 hours, More than 1000 hours) |
+| Outcome | `difficulty` | ordinal | Self-perceived difficulty (Easier than average, Average, More difficult than average) | 
+
+```{r summary table, echo=FALSE}
+# cross classication counts for difficulty by sex 
+kable(prop.table(table(clean_data$difficulty, clean_data$sex)))
+
+# cross classication counts for difficulty by math_skill 
+kable(prop.table(table(clean_data$difficulty, clean_data$math_skill)))
+
+# cross classication counts for difficulty by friend_with_prog 
+kable(prop.table(table(clean_data$difficulty, clean_data$friend_with_prog)))
+
+# cross classication counts for difficulty by prog_exp 
+kable(prop.table(table(clean_data$difficulty, clean_data$prog_exp)))
+```
+
+
+# REDO EDA ?
+
+
+# Analysis 
+
+We decided to apply ordinal regression to test whether the main exposure `prog_exp` has a significant impact on our outcome `difficulty`. The orginal regression is used to facilitate the interaction of dependent variables (having multiple ordered levels) with one or more independent variables.
+
+```{r olr.M0}
+#Null model, no predictors
+olr.M0 <- polr(difficulty~1, data=clean_data)   
+```
+
+
+```{r olr.M1}
+#Full model
+olr.M1 <- polr(difficulty~sex+math_skill+friend_with_prog+prog_exp, data=clean_data)
+```
+
+
+```{r}
+#Are all variables good predictors?
+lrtest(olr.M1, olr.M0)
+```
+
+```{r}
+# Reduced model, with our main variabel 
+olr.M2 <- polr(difficulty~prog_exp, data=clean_data)
+```
+
+```{r}
+olr.M2 <- polr(apply~pared+gpa, data=score) #Reduced model, without interaction.
+olr.M3 <- polr(apply~pared, data=score)     #Reduced model, with only pared.
+olr.M4 <- polr(apply~gpa, data=score)       #Reduced model, with only gpa.
+```
+
+
+----
+
+> Method 2 
+
+
+1. build model 
+
+
+```{r}
+m <- polr(difficulty~sex+math_skill+friend_with_prog+prog_exp, data=clean_data, Hess=TRUE)
+summary(m)
+```
+
+SE, coef, t-value......
+
+AIC -> smaller -> better 
+
+
+2. calculate p-Value, CI, Odds ratio
+
+```{r}
+# p-values 
+ctable <- coef(summary(m))
+p <- pnorm(abs(ctable[, "t value"]), lower.tail = FALSE) * 2
+ctable <- cbind(ctable, "p value" = p)
+ctable
+```
+
+```{r}
+# CI 
+ci <- confint(m)
+```
+
+```{r}
+# OR and Ci
+exp(cbind(OR = coef(m), ci))
+```
+
+
+# Discussion 
+
+## Findings
+  1. Discussing the results and findings of your survey and analysis of the survey data.
+  
+  
+## Sruvey design 
+2. Discussing your survey/study design, specifically:
+    - what did you do well to make this study as causal as possible?
+    - what was not done well and how did that effect your studies conclusions?
+    - what would you do differently next time to improve your survey/study design and why?
+    
+      > data size is small 
+  > self reported is not accurate 
+
+---
+
+
+
+- Your target audience is other Data Scientists who are not familiar with your project.
+- Clearly introduce the survey topic and question you were interested in answering.
+- Link to your study's data and code in the methods section of your report.
+- Include effective visualizations and/or tables that help communicate your findings.
+- Your discussion should have 2 key focuses:
+  1. Discussing the results and findings of your survey and analysis of the survey data.
+  2. Discussing your survey/study design, specifically:
+    - what did you do well to make this study as causal as possible?
+    - what was not done well and how did that effect your studies conclusions?
+    - what would you do differently next time to improve your survey/study design and why?
