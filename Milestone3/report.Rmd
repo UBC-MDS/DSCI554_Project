@@ -85,10 +85,92 @@ kable(prop.table(table(clean_data$difficulty, clean_data$prog_exp)))
 ```
 
 
-# REDO EDA ?
+# Key EDA
+
+We firstly did some preliminary investigations to understand the data and discover important patterns.
+
+```{r Figure1, echo=FALSE}
+clean_data %>% ggplot(aes(prog_exp, difficulty)) +
+  geom_bin2d() +
+  theme_bw() +
+  labs(y = "Self-perceived ifficulty", 
+       x = "Programming Experience",
+       title = "Heatmap of Programming Experience vs. Difficulty") +
+  theme(plot.title = element_text(size = 13, face = "bold", hjust = 0.5)) +
+  coord_fixed() +
+  scale_x_discrete(
+    labels = function(difficulty)
+      str_wrap(difficulty, width = 14)
+  ) +
+  scale_fill_continuous(breaks = c(1, 5, 9))
+```
+*Figure 1.*
+
+It can be seen that the number of students who have been experiencing a harder time in DSCI 512 is greater than the number of students who felt easier than average. 
+
+```{r Figure2, echo=FALSE}
+clean_data %>% 
+  ggplot() +
+  theme_bw() +
+  labs(y = "Self-perceived ifficulty", 
+       x = "Programming Experience",
+       title = "Heatmap of Programming Experience vs. Difficulty") +
+  theme(plot.title = element_text(size = 13, face = "bold", hjust = 0.5)) +
+  geom_bar(aes(difficulty)) +
+  facet_wrap(~prog_exp)
+```
+*Figure 2.*
+
+For the group without no programming experience, more people felt difficult, which makes senes that if students have no programming experiences, they are more likely to strggule with assginments and tests. It is also interesting to note that the difficulty reported by the most of students is average in the rest three other groups (less than 100, less than 1000 hours, More than 1000 hours) and only a few students felt more difficult or less difficult than average. 
+
+
+```{r figure3, echo=FALSE}
+clean_data %>%
+  ggplot() + 
+  theme_bw() +
+  labs(x = "Self-preceived difficulty",
+    y = "Ratio",
+    title = "Self-perceived difficulty vs. Sex") +
+  theme(plot.title = element_text(size = 13, face = "bold", hjust = 0.5)) + 
+  geom_bar(aes(x = difficulty, fill=sex), position = "fill")
+```
+*Figure 3.*
+
+The self-reported difficulty that most of male students felt is average. The number of female students who felt the course easy is actually greater than the number of male student who had the similiar feeling. 
+
+
+```{r figure3, echo=FALSE}
+clean_data %>%
+  ggplot() + 
+  theme_bw() +
+  labs(x = "Self-preceived difficulty",
+    # y = "y",
+    title = "Self-perceived difficulty vs. math skill") +
+  theme(plot.title = element_text(size = 13, face = "bold", hjust = 0.5)) + 
+  geom_bar(aes(x = difficulty, fill = math_skill), position = "dodge") 
+```
+*Figure 4.*
+
+In this figure, we observe that the most of students who have proficiency in math felt that the difficulty of DSCI 512 is average. It seems like that the math skill does not affect the self-perceived difficulty.
+
+```{r figure3, echo=FALSE}
+clean_data %>%
+  ggplot() + 
+  theme_bw() +
+  labs(x = "Friend with programming experience",
+    y = "ratio",
+    title = "Self-perceived difficulty vs. friend with programming experience") +
+  theme(plot.title = element_text(size = 13, face = "bold", hjust = 0.5)) + 
+  geom_bar(aes(x = friend_with_prog, fill = difficulty), position = "fill") 
+```
+*Figure 5.*
+
+It is interesting to note that the students who have no friend with programming experience are more likely to feel more difficult with course materials. If a student has friends with programming experience, he/she tends to feel the difficulty of the course is average.
 
 
 # Analysis 
+
+Method 1 
 
 We decided to apply ordinal regression to test whether the main exposure `prog_exp` has a significant impact on our outcome `difficulty`. The orginal regression is used to facilitate the interaction of dependent variables (having multiple ordered levels) with one or more independent variables.
 
