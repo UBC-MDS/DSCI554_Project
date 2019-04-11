@@ -17,16 +17,16 @@ suppressPackageStartupMessages(library(lmtest))
 # Read data
 data <- suppressMessages(read_csv("../Milestone2/data/data.csv", skip = 2))
 
-# Select data 
+# Select data
 data <-  
-  data %>% 
+  data %>%
   dplyr::select(18:22)
 
-# Rename columns 
+# Rename columns
 names(data) <- c("sex", "math_skill", "friend_with_prog", "prog_exp", "difficulty")
 
 # factorize variable in the data
-clean_data <- 
+clean_data <-
   data %>%
   mutate(sex = as_factor(sex),
          math_skill = factor(math_skill,
@@ -46,41 +46,45 @@ clean_data <-
                                 ordered=TRUE)
   )
 
-```
+```   
 
-# Introduction 
+# Introduction
 
-
-> survey topic + question
+As the Master of Data science program is soon to end, we all like to reflect on the courses we have taken. Some courses we took were difficult and some were relatively easier, but the true question is, how was this affected based on our prior experience. DSCI 512 is a programming and algorithms course in the MDS program at UBC which introduces fundamental algorithms such as sorting and searching, as well as data structures.This project is to analyze whether the level of programming experience prior to the MDS program affects an MDS student's self-perceived difficulty of DSCI 512 materials.
 
 > Null hypothesis: The level of programming experience prior to the MDS program does not influence a person's self-perceived difficulty regarding DSCI 512.
 
 > Alternative hypothesis: The level of programming experience prior to the MDS program influences a person's self-perceived difficulty regarding DSCI 512.
 
+After extensive brainstorming, we decided that the variables we believe that are important are:
+- Previous programming experience
+- Sex
+- Mathematics skill level
+- Whether or not a student has friends or family with programming experience
 
-# Data description 
+# Data description
 
-We collected 56 observations from other MDS students, 554 TAs and lab instructor for self-perceived difficulty of DSCI 512 course. 
+To gather the data, we created a survey and collected 56 observations from our fellow MDS students, 554 TAs and lab instructor for self-perceived difficulty of the DSCI 512 course.
 
 | Variable | Name | Type | Description |
 |---|---|---|---|
 | Confounder | `sex` | category | Female or Male |
-| Confounder | `math_skill` | ordinal | self-reported math skills (Below average, Average, Above average) |
+| Confounder | `math_skill` | ordinal | Self-reported Math skills (Below average, Average, Above average) |
 | Confounder | `friend_with_prog` |  category | Friends who have jobs associated with programming (No, Yes)|
 | Main Covariate | `prog_exp` | ordinal | Previous programming experience prior to the MDS in hour (None, Less than 100 hours, Less than 1000 hours, More than 1000 hours) |
-| Outcome | `difficulty` | ordinal | Self-perceived difficulty (Easier than average, Average, More difficult than average) | 
+| Outcome | `difficulty` | ordinal | Self-perceived difficulty (Easier than average, Average, More difficult than average) |
 
 ```{r summary table, echo=FALSE}
-# cross classication counts for difficulty by sex 
+# cross classication counts for difficulty by sex
 kable(prop.table(table(clean_data$difficulty, clean_data$sex)))
 
-# cross classication counts for difficulty by math_skill 
+# cross classication counts for difficulty by math_skill
 kable(prop.table(table(clean_data$difficulty, clean_data$math_skill)))
 
-# cross classication counts for difficulty by friend_with_prog 
+# cross classication counts for difficulty by friend_with_prog
 kable(prop.table(table(clean_data$difficulty, clean_data$friend_with_prog)))
 
-# cross classication counts for difficulty by prog_exp 
+# cross classication counts for difficulty by prog_exp
 kable(prop.table(table(clean_data$difficulty, clean_data$prog_exp)))
 ```
 
@@ -93,7 +97,7 @@ We firstly did some preliminary investigations to understand the data and discov
 clean_data %>% ggplot(aes(prog_exp, difficulty)) +
   geom_bin2d() +
   theme_bw() +
-  labs(y = "Self-perceived ifficulty", 
+  labs(y = "Self-perceived ifficulty",
        x = "Programming Experience",
        title = "Heatmap of Programming Experience vs. Difficulty") +
   theme(plot.title = element_text(size = 13, face = "bold", hjust = 0.5)) +
@@ -106,13 +110,13 @@ clean_data %>% ggplot(aes(prog_exp, difficulty)) +
 ```
 *Figure 1.*
 
-It can be seen that the number of students who have been experiencing a harder time in DSCI 512 is greater than the number of students who felt easier than average. 
+It can be seen that the number of students who have been experiencing a harder time in DSCI 512 is greater than the number of students who felt easier than average.
 
 ```{r Figure2, echo=FALSE}
-clean_data %>% 
+clean_data %>%
   ggplot() +
   theme_bw() +
-  labs(y = "Self-perceived ifficulty", 
+  labs(y = "Self-perceived ifficulty",
        x = "Programming Experience",
        title = "Heatmap of Programming Experience vs. Difficulty") +
   theme(plot.title = element_text(size = 13, face = "bold", hjust = 0.5)) +
@@ -121,33 +125,33 @@ clean_data %>%
 ```
 *Figure 2.*
 
-For the group without no programming experience, more people felt difficult, which makes senes that if students have no programming experiences, they are more likely to strggule with assginments and tests. It is also interesting to note that the difficulty reported by the most of students is average in the rest three other groups (less than 100, less than 1000 hours, More than 1000 hours) and only a few students felt more difficult or less difficult than average. 
+For the group without no programming experience, more people felt difficult, which makes senes that if students have no programming experiences, they are more likely to strggule with assginments and tests. It is also interesting to note that the difficulty reported by the most of students is average in the rest three other groups (less than 100, less than 1000 hours, More than 1000 hours) and only a few students felt more difficult or less difficult than average.
 
 
 ```{r figure3, echo=FALSE}
 clean_data %>%
-  ggplot() + 
+  ggplot() +
   theme_bw() +
   labs(x = "Self-preceived difficulty",
     y = "Ratio",
     title = "Self-perceived difficulty vs. Sex") +
-  theme(plot.title = element_text(size = 13, face = "bold", hjust = 0.5)) + 
+  theme(plot.title = element_text(size = 13, face = "bold", hjust = 0.5)) +
   geom_bar(aes(x = difficulty, fill=sex), position = "fill")
 ```
 *Figure 3.*
 
-The self-reported difficulty that most of male students felt is average. The number of female students who felt the course easy is actually greater than the number of male student who had the similiar feeling. 
+The self-reported difficulty that most of male students felt is average. The number of female students who felt the course easy is actually greater than the number of male student who had the similiar feeling.
 
 
 ```{r figure3, echo=FALSE}
 clean_data %>%
-  ggplot() + 
+  ggplot() +
   theme_bw() +
   labs(x = "Self-preceived difficulty",
     # y = "y",
     title = "Self-perceived difficulty vs. math skill") +
-  theme(plot.title = element_text(size = 13, face = "bold", hjust = 0.5)) + 
-  geom_bar(aes(x = difficulty, fill = math_skill), position = "dodge") 
+  theme(plot.title = element_text(size = 13, face = "bold", hjust = 0.5)) +
+  geom_bar(aes(x = difficulty, fill = math_skill), position = "dodge")
 ```
 *Figure 4.*
 
@@ -155,24 +159,60 @@ In this figure, we observe that the most of students who have proficiency in mat
 
 ```{r figure3, echo=FALSE}
 clean_data %>%
-  ggplot() + 
+  ggplot() +
   theme_bw() +
   labs(x = "Friend with programming experience",
     y = "ratio",
     title = "Self-perceived difficulty vs. friend with programming experience") +
-  theme(plot.title = element_text(size = 13, face = "bold", hjust = 0.5)) + 
-  geom_bar(aes(x = friend_with_prog, fill = difficulty), position = "fill") 
+  theme(plot.title = element_text(size = 13, face = "bold", hjust = 0.5)) +
+  geom_bar(aes(x = friend_with_prog, fill = difficulty), position = "fill")
 ```
 *Figure 5.*
 
 It is interesting to note that the students who have no friend with programming experience are more likely to feel more difficult with course materials. If a student has friends with programming experience, he/she tends to feel the difficulty of the course is average.
 
 
-# Analysis 
+# Analysis
 
-Method 1 
+To analyze our data, we decided to implement two different methods of testing: (1) Ordinal Regression Test and (2) Likelihood Ratio Test with Ordinal Regression.
 
-We decided to apply ordinal regression to test whether the main exposure `prog_exp` has a significant impact on our outcome `difficulty`. The orginal regression is used to facilitate the interaction of dependent variables (having multiple ordered levels) with one or more independent variables.
+## Method 1 - Ordinal Regression Test
+
+### 1. Create model
+
+```{r}
+m <- polr(difficulty~sex+math_skill+friend_with_prog+prog_exp, data=clean_data, Hess=TRUE)
+summary(m)
+```
+
+SE, coef, t-value......
+
+AIC -> smaller -> better
+
+
+### 2. Calculate p-Value, CI, Odds ratio
+
+```{r}
+# p-values
+ctable <- coef(summary(m))
+p <- pnorm(abs(ctable[, "t value"]), lower.tail = FALSE) * 2
+ctable <- cbind(ctable, "p value" = p)
+ctable
+```
+
+```{r}
+# CI
+ci <- confint(m)
+```
+
+```{r}
+# OR and Ci
+exp(cbind(OR = coef(m), ci))
+```
+
+## Method 2 - Likelihood Ratio Test with Ordinal Logistic Regression
+
+We decided to apply ordinal regression to test whether the main exposure `prog_exp` has a significant impact on our outcome `difficulty`. The orginal regression is used to facilitate the interaction of dependent variables (having multiple ordered levels) with one or more independent variables. In this case, because we are comparing the fit of multiple different models, we decided to adjust our p-values with the Bonferroni correction.
 
 ```{r olr.M0}
 #Null model, no predictors
@@ -192,7 +232,7 @@ lrtest(olr.M1, olr.M0)
 ```
 
 ```{r}
-# Reduced model, with our main variabel 
+# Reduced model, with our main variabel
 olr.M2 <- polr(difficulty~prog_exp, data=clean_data)
 ```
 
@@ -203,62 +243,25 @@ olr.M4 <- polr(apply~gpa, data=score)       #Reduced model, with only gpa.
 ```
 
 
-----
-
-> Method 2 
-
-
-1. build model 
-
-
-```{r}
-m <- polr(difficulty~sex+math_skill+friend_with_prog+prog_exp, data=clean_data, Hess=TRUE)
-summary(m)
-```
-
-SE, coef, t-value......
-
-AIC -> smaller -> better 
-
-
-2. calculate p-Value, CI, Odds ratio
-
-```{r}
-# p-values 
-ctable <- coef(summary(m))
-p <- pnorm(abs(ctable[, "t value"]), lower.tail = FALSE) * 2
-ctable <- cbind(ctable, "p value" = p)
-ctable
-```
-
-```{r}
-# CI 
-ci <- confint(m)
-```
-
-```{r}
-# OR and Ci
-exp(cbind(OR = coef(m), ci))
-```
-
-
-# Discussion 
+# Discussion
 
 ## Findings
   1. Discussing the results and findings of your survey and analysis of the survey data.
-  
-  
-## Sruvey design 
-2. Discussing your survey/study design, specifically:
-    - what did you do well to make this study as causal as possible?
-    - what was not done well and how did that effect your studies conclusions?
-    - what would you do differently next time to improve your survey/study design and why?
-    
-      > data size is small 
-  > self reported is not accurate 
+
+
+## Survey design
+Discussing your survey/study design, specifically:
+
+1. what did you do well to make this study as causal as possible?
+2. what was not done well and how did that effect your studies conclusions?
+
+One of the biggest problems that we discovered after performing the analysis is that the amount of data we collected is simply not enough to make conclusive claims. Perhaps it would have been helpful if we decided to collect data from previous cohorts of the MDS program. It might also be better if we continued our research to allow future MDS cohorts to reflect and take the survey. Another issue of our survey is that the level of "self-reported" infomration is very subjective to different people. An "Average" difficulty might mean something different to two different students. Therefore, it is quite difficult to evaluate the results of our research.
+
+3. what would you do differently next time to improve your survey/study design and why?
+
+Originally when we were designing our survey, we thought it was very logical to make our variables categorical and ordinal, even our response variable (i.e. self-perceived difficulty of DSCI 512). However, while we were performing analyses and tests with our data, we realized that because our variables were not numerical, we lost a lot of flexibility with our analysis. If, for example, our response variable was numerical, we could have performed more tests such as ANOVA. Furthermore, if we figured that numerical data does not really work with our analysis, we could have binned them to become categorical. We feel that only using categorical data really limited our ability to perform different analysis, and if we were to perform similar research in the future, this is definitely something we would change.
 
 ---
-
 
 
 - Your target audience is other Data Scientists who are not familiar with your project.
