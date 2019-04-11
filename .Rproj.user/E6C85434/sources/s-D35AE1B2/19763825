@@ -1,0 +1,26 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1554487180067.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "19763825",
+    "lastKnownWriteTime" : 1554500783,
+    "last_content_update" : 1554500783516,
+    "path" : "~/Documents/GitHub/DSCI_554_Project/Milestone2/EDA.R",
+    "project_path" : "Milestone2/EDA.R",
+    "properties" : {
+        "cursorPosition" : "17,14",
+        "scrollLine" : "0",
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
