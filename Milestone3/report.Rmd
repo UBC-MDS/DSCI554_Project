@@ -46,26 +46,30 @@ clean_data <-
                                 ordered=TRUE)
   )
 
-```
+```   
 
 # Introduction 
 
-
-> survey topic + question
+As the Master of Data science program is soon to end, we all like to reflect on the courses we have taken. Some courses we took were difficult and some were relatively easier, but the true question is, how was this affected based on our prior experience. DSCI 512 is a programming and algorithms course in the MDS program at UBC which introduces fundamental algorithms such as sorting and searching, as well as data structures.This project is to analyze whether the level of programming experience prior to the MDS program affects an MDS student's self-perceived difficulty of DSCI 512 materials.
 
 > Null hypothesis: The level of programming experience prior to the MDS program does not influence a person's self-perceived difficulty regarding DSCI 512.
 
 > Alternative hypothesis: The level of programming experience prior to the MDS program influences a person's self-perceived difficulty regarding DSCI 512.
 
+After extensive brainstorming, we decided that the variables we believe that are important are:
+- Previous programming experience
+- Sex
+- Mathematics skill level
+- Whether or not a student has friends or family with programming experience
 
 # Data description 
 
-We collected 56 observations from other MDS students, 554 TAs and lab instructor for self-perceived difficulty of DSCI 512 course. 
+To gather the data, we created a survey and collected 56 observations from our fellow MDS students, 554 TAs and lab instructor for self-perceived difficulty of the DSCI 512 course. 
 
 | Variable | Name | Type | Description |
 |---|---|---|---|
 | Confounder | `sex` | category | Female or Male |
-| Confounder | `math_skill` | ordinal | self-reported math skills (Below average, Average, Above average) |
+| Confounder | `math_skill` | ordinal | Self-reported Math skills (Below average, Average, Above average) |
 | Confounder | `friend_with_prog` |  category | Friends who have jobs associated with programming (No, Yes)|
 | Main Covariate | `prog_exp` | ordinal | Previous programming experience prior to the MDS in hour (None, Less than 100 hours, Less than 1000 hours, More than 1000 hours) |
 | Outcome | `difficulty` | ordinal | Self-perceived difficulty (Easier than average, Average, More difficult than average) | 
@@ -90,7 +94,11 @@ kable(prop.table(table(clean_data$difficulty, clean_data$prog_exp)))
 
 # Analysis 
 
-We decided to apply ordinal regression to test whether the main exposure `prog_exp` has a significant impact on our outcome `difficulty`. The orginal regression is used to facilitate the interaction of dependent variables (having multiple ordered levels) with one or more independent variables.
+To analyze our data, we decided to implement two different methods of testing: (1) Likelihood Ratio Test with Ordinal Regression and (2) Ordinal Regression Test. 
+
+## Method 1 - Likelihood Ratio Test with Ordinal Logistic Regression
+
+We decided to apply ordinal regression to test whether the main exposure `prog_exp` has a significant impact on our outcome `difficulty`. The orginal regression is used to facilitate the interaction of dependent variables (having multiple ordered levels) with one or more independent variables. In this case, because we are comparing the fit of multiple different models, we decided to adjust  Bonferroni correction
 
 ```{r olr.M0}
 #Null model, no predictors
@@ -123,11 +131,9 @@ olr.M4 <- polr(apply~gpa, data=score)       #Reduced model, with only gpa.
 
 ----
 
-> Method 2 
+## Method 2 - Ordinal Regression Test
 
-
-1. build model 
-
+### 1. Create model
 
 ```{r}
 m <- polr(difficulty~sex+math_skill+friend_with_prog+prog_exp, data=clean_data, Hess=TRUE)
@@ -139,7 +145,7 @@ SE, coef, t-value......
 AIC -> smaller -> better 
 
 
-2. calculate p-Value, CI, Odds ratio
+### 2. Calculate p-Value, CI, Odds ratio
 
 ```{r}
 # p-values 
@@ -166,17 +172,19 @@ exp(cbind(OR = coef(m), ci))
   1. Discussing the results and findings of your survey and analysis of the survey data.
   
   
-## Sruvey design 
-2. Discussing your survey/study design, specifically:
-    - what did you do well to make this study as causal as possible?
-    - what was not done well and how did that effect your studies conclusions?
-    - what would you do differently next time to improve your survey/study design and why?
-    
-      > data size is small 
-  > self reported is not accurate 
+## Survey design 
+Discussing your survey/study design, specifically:
+
+1. what did you do well to make this study as causal as possible?
+2. what was not done well and how did that effect your studies conclusions? 
+
+One of the biggest problems that we discovered after performing the analysis is that the amount of data we collected is simply not enough to make conclusive claims. Perhaps it would have been helpful if we decided to collect data from previous cohorts of the MDS program. It might also be better if we continued our research to allow future MDS cohorts to reflect and take the survey. Another issue of our survey is that the level of "self-reported" infomration is very subjective to different people. An "Average" difficulty might mean something different to two different students. Therefore, it is quite difficult to evaluate the results of our research. 
+
+3. what would you do differently next time to improve your survey/study design and why?
+
+Originally when we were designing our survey, we thought it was very logical to make our variables categorical and ordinal, even our response variable (i.e. self-perceived difficulty of DSCI 512). However, while we were performing analyses and tests with our data, we realized that because our variables were not numerical, we lost a lot of flexibility with our analysis. If, for example, our response variable was numerical, we could have performed more tests such as ANOVA. Furthermore, if we figured that numerical data does not really work with our analysis, we could have binned them to become categorical. We feel that only using categorical data really limited our ability to perform different analysis, and if we were to perform similar research in the future, this is definitely something we would change.
 
 ---
-
 
 
 - Your target audience is other Data Scientists who are not familiar with your project.
