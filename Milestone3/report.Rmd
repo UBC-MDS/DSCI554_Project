@@ -104,6 +104,12 @@ olr.M1 <- polr(difficulty~sex+math_skill+friend_with_prog+prog_exp, data=clean_d
 ```
 
 
+```{r olr.M1}
+
+olr.M1 <- polr(difficulty~sex+math_skill+friend_with_prog+prog_exp, data=clean_data)
+
+```
+
 ```{r}
 #Are all variables good predictors?
 lrtest(olr.M1, olr.M0)
@@ -115,9 +121,27 @@ olr.M2 <- polr(difficulty~prog_exp, data=clean_data)
 ```
 
 ```{r}
+#Drafting other models - PV
+# sex, math_skill, friend_with_prog, prog_exp
+
+# need to try confounders individually with our predictor?
+# interaction between sex and programming experience?
+
+olr.M2 <- polr(difficulty~prog_exp+sex, data=clean_data) #Reduced model, without interaction.
+olr.M3 <- polr(difficulty~prog_exp+math_skill, data=clean_data)     #Reduced model, with only pared.
+olr.M4 <- polr(difficulty~prog_exp+friend_with_prog, data=clean_data)       #Reduced model, with only gpa.
+
+
+
 olr.M2 <- polr(apply~pared+gpa, data=score) #Reduced model, without interaction.
 olr.M3 <- polr(apply~pared, data=score)     #Reduced model, with only pared.
 olr.M4 <- polr(apply~gpa, data=score)       #Reduced model, with only gpa.
+
+olr.M1 <- polr(difficulty~sex+math_skill+friend_with_prog+prog_exp, data=clean_data)
+
+
+lrtest(olr.M1, olr.M3)
+
 ```
 
 
