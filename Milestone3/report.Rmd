@@ -277,7 +277,7 @@ olr.M1 <- polr(difficulty~sex+math_skill+friend_with_prog+prog_exp, data=clean_d
 lrtest(olr.M1, olr.M0)
 ```
 
-Based on the p-value, this model does not provide a better fit than the null model.  Next, we try a model using only our main independent variable, `prog_exp`:
+Based on the p-value, this model does not provide a better fit than the null model.  Next, we tried a model using only our main independent variable, `prog_exp`:
 
 ```{r olr.M2}
 # Reduced model, with our main variable
@@ -290,9 +290,9 @@ olr.M2 <- polr(difficulty~prog_exp, data=clean_data)
 lrtest(olr.M2, olr.M0)
 ```
 
-This model provides an even worse fit compared to the null model.  
+This model provided an even worse fit compared to the null model.  
 
-Lastly, we try modelling an interaction between `friend_with_prog`, and `prog_exp`.  The rationale here is that the effect of having a friend or family member with programming experience may vary based on personal programming experience.  For example, a student with more than 1000 hours of programming experience may not benefit from having a friend or family member with programming experience because they already have the programming that the friend or family member might otherwise help them with.  On the other hand, a student with no programming experience probably stands to benefit far more if they have a friend or family member who can help them with coding.
+Lastly, we tried modelling an interaction between `friend_with_prog`, and `prog_exp`.  The rationale here is that the effect of having a friend or family member with programming experience may vary based on personal programming experience.  For example, a student with more than 1000 hours of programming experience may not benefit from having a friend or family member with programming experience because they already have the programming that the friend or family member might otherwise help them with.  On the other hand, a student with no programming experience probably stands to benefit far more if they have a friend or family member who can help them with coding.
 
 ```{r olr.M3}
 # Modeling a possible interaction
@@ -327,19 +327,18 @@ lrtest(olr.M4, olr.M0)
 
 
 ## 5.2 Survey design
-Discussing your survey/study design, specifically:
 
-1. what did you do well to make this study as causal as possible?
+### Design
 
-We put a lot of thought into which variables to include as potential confounders.  Spending the proper amount of time on this before distributing the survey helped ensure that we did not realize additional potential confounders during our analysis when it would be too late to gather data to control for them.  This diligence helped our end goal of reaching a conclusion free of spurious findings.
+We put a lot of thought into which variables to include as potential confounders.  Spending the proper amount of time on this before distributing the survey helped ensure that we did not realize additional potential confounders during our analysis when it would be too late to gather data to control for them.  This diligence helped our end goal of reaching a conclusion free of spurious findings. We also made an assumption that relationship between each pair of outcome groups is the same.
 
-2. what was not done well and how did that effect your studies conclusions?
+### Limitations
 
 One of the biggest problems that we discovered after performing the analysis is that the amount of data we collected is simply not enough to make conclusive claims. Perhaps it would have been helpful if we decided to collect data from previous cohorts of the MDS program. It might also be better if we continued our research to allow future MDS cohorts to reflect and take the survey.
 
 Another issue of our survey is that the level of "self-reported" information is very subjective. An "Average" difficulty might mean something different to two different students. Therefore, it is quite difficult to evaluate the results of our research.
 
-3. what would you do differently next time to improve your survey/study design and why?
+### Future Directions
 
 Originally when we were designing our survey, we thought it was very logical to make our variables categorical and ordinal, even our response variable (i.e. self-perceived difficulty of DSCI 512). However, while we were performing analyses and tests with our data, we realized that because our variables were not numerical, we lost a lot of flexibility with our analysis. If, for example, our response variable was numerical, we could have performed more tests such as ANOVA. Furthermore, if we found that numerical data does not work with our analysis, we could have binned them to become categorical. We feel that only using categorical data limited our ability to perform different analysis, and if we were to perform similar research in the future, this is definitely something we would change.
 

@@ -129,24 +129,24 @@ We decided to apply ordinal regression to test whether the main exposure `prog_e
 
 ``` r
 # fit ordered logit regression model 
-m <- polr(difficulty~sex+math_skill + friend_with_prog + prog_exp, data=clean_data, Hess=TRUE)
+m <- polr(difficulty~ prog_exp + sex+math_skill + friend_with_prog, data=clean_data, Hess=TRUE)
 # view a summary of the model 
 summary(m)
 ```
 
     ## Call:
-    ## polr(formula = difficulty ~ sex + math_skill + friend_with_prog + 
-    ##     prog_exp, data = clean_data, Hess = TRUE)
+    ## polr(formula = difficulty ~ prog_exp + sex + math_skill + friend_with_prog, 
+    ##     data = clean_data, Hess = TRUE)
     ## 
     ## Coefficients:
     ##                                 Value Std. Error  t value
+    ## prog_expLess than 100 hours  -0.17284     0.8932 -0.19350
+    ## prog_expLess than 1000 hours  0.03418     0.9174  0.03726
+    ## prog_expMore than 1000 hours -0.16640     0.9370 -0.17759
     ## sexMale                       0.33583     0.5400  0.62194
     ## math_skillAverage             0.33076     1.3670  0.24197
     ## math_skillAbove Average       0.88570     1.2939  0.68450
     ## friend_with_progNo            0.77935     0.6380  1.22162
-    ## prog_expLess than 100 hours  -0.17284     0.8932 -0.19350
-    ## prog_expLess than 1000 hours  0.03418     0.9174  0.03726
-    ## prog_expMore than 1000 hours -0.16640     0.9370 -0.17759
     ## 
     ## Intercepts:
     ##                                     Value   Std. Error t value
@@ -158,7 +158,7 @@ summary(m)
 
 The output of coefficents table contains the values of each coefficients, standard error and t values. Residual deviance and AIC are useful for later model comparison.
 
-We the calculate the p-value by comparing the t-value against the standard normal distribution and assuming that our data set is large enough.
+We calculated the p-values by comparing the t-value against the standard normal distribution and assumed that our data set is large enough.
 
 ``` r
 # create table
@@ -171,21 +171,24 @@ ctable %>% kable()
 
 |                                     |       Value|  Std. Error|     t value|    p value|
 |-------------------------------------|-----------:|-----------:|-----------:|----------:|
+| prog\_expLess than 100 hours        |  -0.1728359|   0.8931988|  -0.1935021|  0.8465657|
+| prog\_expLess than 1000 hours       |   0.0341831|   0.9173926|   0.0372611|  0.9702768|
+| prog\_expMore than 1000 hours       |  -0.1663964|   0.9369797|  -0.1775880|  0.8590465|
 | sexMale                             |   0.3358303|   0.5399724|   0.6219398|  0.5339814|
 | math\_skillAverage                  |   0.3307642|   1.3669667|   0.2419695|  0.8088038|
 | math\_skillAbove Average            |   0.8856973|   1.2939238|   0.6845050|  0.4936563|
 | friend\_with\_progNo                |   0.7793453|   0.6379616|   1.2216178|  0.2218522|
-| prog\_expLess than 100 hours        |  -0.1728359|   0.8931988|  -0.1935021|  0.8465657|
-| prog\_expLess than 1000 hours       |   0.0341831|   0.9173926|   0.0372611|  0.9702768|
-| prog\_expMore than 1000 hours       |  -0.1663964|   0.9369797|  -0.1775880|  0.8590465|
 | Easier than average|Average         |  -0.6713122|   1.5074144|  -0.4453401|  0.6560740|
 | Average|More difficult than average |   1.5127481|   1.5184046|   0.9962747|  0.3191167|
 
 *Table 6. P-value of coefficients and intercepts*
 
-We can observe from table 6 that all p-values are greater than a typical threshold 0.05, which indicates that
+We can observe from table 6 that all p-values are greater than a typical threshold 0.05, which indicates that a significant difference exists. In other words, the different level of programming experience prior to the MDS program does not affect the MDS students' self-perceived difficulty of DSCI 512.
+
+We also applied [Anova type 3](https://mcfromnz.wordpress.com/2011/03/02/anova-type-iiiiii-ss-explained/) from `Car` R package that can be used in [ordinal regression model](https://rpubs.com/kaz_yos/polr) to verify the results above.
 
 ``` r
+# perform Anova type 3 test on the ordinal regression model 
 Anova(m, type = 3)
 ```
 
@@ -193,17 +196,19 @@ Anova(m, type = 3)
     ## 
     ## Response: difficulty
     ##                  LR Chisq Df Pr(>Chisq)
+    ## prog_exp          0.14187  3     0.9864
     ## sex               0.38773  1     0.5335
     ## math_skill        1.09944  2     0.5771
     ## friend_with_prog  1.51981  1     0.2176
-    ## prog_exp          0.14187  3     0.9864
+
+As shown above, it can be clearly seen that the results suggest that neither one of variables has a significant impact on the outcome variable `difficulty`.
 
 4.2 Method 2 - Likelihood Ratio Test with Ordinal Logistic Regression
 ---------------------------------------------------------------------
 
-Here we compare the fit of several different models. We have forgone any multiple comparison corrections due to the high p-values resulting from **all** of the models below. If any of these models had p-values less than 0.05, we would have controlled the family-wise error rate via a Bonferroni correction.
+Here we compared the fit of several different models. We have forgone any multiple comparison corrections due to the high p-values resulting from **all** of the models below. If any of these models had p-values less than 0.05, we would have controlled the family-wise error rate via a Bonferroni correction.
 
-First, we compare the null model to the model from Method 1 above:
+First, we compared the null model to the model from Method 1 above:
 
 ``` r
 # Null model, no predictors
@@ -317,13 +322,13 @@ Another issue of our survey is that the level of "self-reported" information is 
 
 Originally when we were designing our survey, we thought it was very logical to make our variables categorical and ordinal, even our response variable (i.e. self-perceived difficulty of DSCI 512). However, while we were performing analyses and tests with our data, we realized that because our variables were not numerical, we lost a lot of flexibility with our analysis. If, for example, our response variable was numerical, we could have performed more tests such as ANOVA. Furthermore, if we found that numerical data does not work with our analysis, we could have binned them to become categorical. We feel that only using categorical data limited our ability to perform different analysis, and if we were to perform similar research in the future, this is definitely something we would change.
 
-------------------------------------------------------------------------
-
 6.0 References
 ==============
 
 1.  [How to use Multinomial and Ordinal Logistic Regression in R ?](https://www.analyticsvidhya.com/blog/2016/02/multinomial-ordinal-logistic-regression/)
 2.  [Ordinal logistic regression](https://stats.idre.ucla.edu/r/dae/ordinal-logistic-regression/)
+
+------------------------------------------------------------------------
 
 -   Your target audience is other Data Scientists who are not familiar with your project.
 -   Clearly introduce the survey topic and question you were interested in answering.
