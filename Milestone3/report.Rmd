@@ -1,6 +1,6 @@
 ---
 title: "Milestone 3 - Report"
-date: "Date: 2019/04/22"  
+date: "Date: 2019/04/12"  
 author: "Authors: Patrick Tung, Paul Vial, and  Mengda (Albert) Yu"
 output:
    github_document:
@@ -32,17 +32,17 @@ names(data) <- c("sex", "math_skill", "friend_with_prog", "prog_exp", "difficult
 # factorize variable in the data
 clean_data <-
   data %>%
-  mutate(sex = as_factor(sex),
-         math_skill = factor(math_skill,
+  mutate(sex = as_factor(sex, c("Female", "Male")),
+         math_skill = factor(math_skill, 
                                 levels=c("Below Average",
                                          "Average",
-                                         "Above Average"), ordered=FALSE),
-         friend_with_prog = as_factor(friend_with_prog),
+                                         "Above Average")),
+         friend_with_prog = as_factor(friend_with_prog, 0:1, c("Yes", "No")),
          prog_exp = factor(prog_exp,
                               levels=c("None",
                                        "Less than 100 hours",
                                        "Less than 1000 hours",
-                                       "More than 1000 hours"), ordered=FALSE),
+                                       "More than 1000 hours")),
          difficulty = factor(difficulty,
                                 levels=c("Easier than average",
                                          "Average",
@@ -51,6 +51,7 @@ clean_data <-
   )
 
 ```   
+---
 
 # 1.0 Introduction
 
@@ -73,19 +74,12 @@ After extensive brainstorming, we decided that the variables we believe that are
 
 # 2.0 Data description
 
-To gather the data, we created a survey and collected 56 observations from our fellow MDS students, DSCI 554 TAs, and lab instructor for self-perceived difficulty of the DSCI 512 course.
+To gather the [data](https://github.ubc.ca/MDS-2018-19/DSCI_554_Project_data/blob/master/data.csv), we created a survey and collected 56 observations from our fellow MDS students, DSCI 554 TAs, and lab instructor for self-perceived difficulty of the DSCI 512 course.
 
 
-| Variable | Name | Type | Description |
-|:---:|:---:|:---:|:---:|
-| Confounder | `sex` | categorical | Female or Male |
-| Confounder | `math_skill` | categorical | Self-reported Math skills (Below average, Average, Above average) |
-| Confounder | `friend_with_prog` |  category | Friends who have jobs associated with programming (No, Yes)|
-| Main Covariate | `prog_exp` | categorical | Previous programming experience prior to the MDS in hour (None, Less than 100 hours, Less than 1000 hours, More than 1000 hours) |
-| Outcome | `difficulty` | ordinal | Self-perceived difficulty (Easier than average, Average, More difficult than average) |
+![](summary_tbl.png)
 
 *Table 1: Surveyed Variables*
-
 
 
 ```{r summary table 1, echo=FALSE, fig.align='center'}
@@ -93,8 +87,8 @@ To gather the data, we created a survey and collected 56 observations from our f
 kable(prop.table(table(clean_data$difficulty, clean_data$sex)))
 ```
 
-*Table 2: Cross classication proportions for difficulty by sex*
 
+*Table 2: Cross classication proportions for difficulty by sex*
 
 
 ```{r summary table 2, echo=FALSE, fig.align='center'}
@@ -102,8 +96,8 @@ kable(prop.table(table(clean_data$difficulty, clean_data$sex)))
 kable(prop.table(table(clean_data$difficulty, clean_data$math_skill)))
 ```
 
-*Table 3: Cross classication proportions for difficulty by math skills*
 
+*Table 3: Cross classication proportions for difficulty by math skills*
 
 
 ```{r summary table 3, echo=FALSE, fig.align='center'}
@@ -111,14 +105,15 @@ kable(prop.table(table(clean_data$difficulty, clean_data$math_skill)))
 kable(prop.table(table(clean_data$difficulty, clean_data$friend_with_prog)))
 ```
 
-*Table 4: Cross classication proportions for difficulty by friends or family with programming experience*
 
+*Table 4: Cross classication proportions for difficulty by friends or family with programming experience*
 
 
 ```{r summary table 4, echo=FALSE, fig.align='center'}
 # cross classication counts for difficulty by prog_exp
 kable(prop.table(table(clean_data$difficulty, clean_data$prog_exp)))
 ```
+
 
 *Table 5: Cross classication proportions for difficulty by programming experience*
 
@@ -143,7 +138,7 @@ clean_data %>% ggplot(aes(prog_exp, difficulty)) +
   scale_fill_continuous(breaks = c(1, 5, 9))
 ```
 
-*Figure 1.*
+ <p style="text-align:center;">Figure 1.</p>
 
 It can be seen that the number of students who have been experiencing a harder time in DSCI 512 is greater than the number of students who found the course easier than average.
 
@@ -159,7 +154,7 @@ clean_data %>%
   facet_wrap(~prog_exp)
 ```
 
-*Figure 2.*
+ <p style="text-align:center;">Figure 2.</p>
 
 The group without programming experience had the greatest proportion of people that found the course to be difficult.  It makes sense that if students have no programming experiences, they are more likely to struggle with assignments and tests. It is also interesting that the most commonly reported level of difficulty was "Average" across the three other groups (less than 100, less than 1000 hours, More than 1000 hours), and that relatively few students found the course to be more difficult or less difficult than average.
 
@@ -175,7 +170,7 @@ clean_data %>%
   geom_bar(aes(x = difficulty, fill=sex), position = "fill")
 ```
 
-*Figure 3.*
+ <p style="text-align:center;">Figure 3.</p>
 
 Most male students reported average difficulty. The number of female students who felt the course was easy is greater than the number of male students who felt that way.
 
@@ -191,8 +186,8 @@ clean_data %>%
   theme(plot.title = element_text(size = 13, face = "bold", hjust = 0.5)) +
   geom_bar(aes(x = difficulty, fill = math_skill), position = "dodge")
 ```
-
-*Figure 4.*
+ 
+ <p style="text-align:center;">Figure 4.</p>
 
 In this figure, we observe that the most of students who have proficiency in math felt that the difficulty of DSCI 512 is average. It seems that the math skill does not affect the self-perceived difficulty of the course.
 
@@ -207,67 +202,72 @@ clean_data %>%
   geom_bar(aes(x = friend_with_prog, fill = difficulty), position = "fill")
 ```
 
-*Figure 5.*
+ <p style="text-align:center;">Figure 5.</p>
 
 It is interesting to note that the students who have no friends or family with programming experience are more likely to feel more difficult with the course materials. If a student has friends with programming experience, he/she tends to think that the difficulty of the course is average.
 
 
 # 4.0 Analysis
 
-To analyze our data, we implemented two different methods of testing: (1) Ordinal Regression Test and (2) Likelihood Ratio Test with Ordinal Regression.
+To analyze our data, we implemented two different methods of testing: (1) Ordinal Logistic Regression Test and (2) Likelihood Ratio Test with multiple Ordinal Regression Models.
 
-## Method 1 - Ordinal Regression Test
+## 4.1 Method 1 - Ordinal Logistic Regression Test
 
-We decided to apply ordinal regression to test whether the main exposure `prog_exp` has a significant impact on our outcome `difficulty`. The orginal regression is used to facilitate the interaction of dependent variables (having multiple ordered levels) with one or more independent variables.
+We decided to apply ordinal regression to test whether the main exposure `prog_exp` with some confounders have a significant impact on our outcome `difficulty`. The orginal regression is used to facilitate the interaction of dependent variables (having multiple ordered levels) with one or more independent variables. We used the polr from `MASS` package to estimate the OLR model. We also had `Hess = TRUE` to return the observed information matrix from optimaization for standard error.
 
 ```{r}
-m <- polr(difficulty~sex+math_skill+friend_with_prog+prog_exp, data=clean_data, Hess=TRUE)
+# fit ordered logit regression model 
+m <- polr(difficulty~ prog_exp + sex+math_skill + friend_with_prog, data=clean_data, Hess=TRUE)
+# view a summary of the model 
 summary(m)
 ```
 
-SE, coef, t-value......
+The output of coefficents table contains the values of each coefficients, standard error and t values. Residual deviance and AIC are useful for later model comparison.
 
-AIC -> smaller -> better
-
-
-### 2. Calculate p-Value, CI, Odds ratio
+We calculated the p-values by comparing the t-value against the standard normal distribution and assumed that our data set is large enough.  
 
 ```{r}
-# p-values
+# create table
 ctable <- coef(summary(m))
+# calculate p-values
 p <- pnorm(abs(ctable[, "t value"]), lower.tail = FALSE) * 2
 ctable <- cbind(ctable, "p value" = p)
-ctable
+ctable %>% kable()
 ```
 
-```{r}
-# CI
-ci <- confint(m)
+*Table 6. P-value of coefficients and intercepts*
+ 
+We can observe from table 6 that all p-values are greater than a typical threshold 0.05, which indicates that a significant difference exists. In other words, the different level of programming experience prior to the MDS program does not affect the MDS students' self-perceived difficulty of DSCI 512.
+
+```{r, echo=FALSE, eval=FALSE}
+## Odd Ratios and CI 
+# ci <- confint(m)
+# exp(cbind(OR = coef(m), ci)) %>% kable() # ***exp***
 ```
 
-```{r}
-# OR and Ci
-exp(cbind(OR = coef(m), ci))
-```
+We also applied [Anova type 3](https://mcfromnz.wordpress.com/2011/03/02/anova-type-iiiiii-ss-explained/) from `Car` R package that can be used in [ordinal regression model](https://rpubs.com/kaz_yos/polr) to verify the results above.
 
 ```{r}
+# perform Anova type 3 test on the ordinal regression model 
 Anova(m, type = 3)
 ```
 
-## Method 2 - Likelihood Ratio Test with Ordinal Logistic Regression
+As shown above, it can be clearly seen that the results suggest that neither one of variables has a significant impact on the outcome variable `difficulty`. 
 
-Here we compare the fit of several different models.  We have forgone any multiple comparison corrections due to the high p-values resulting from **all** of the models below.  If any of these models had p-values less than 0.05, we would have controlled the family-wise error rate via a Bonferroni correction.
+## 4.2 Method 2 - Likelihood Ratio Test with Ordinal Logistic Regression
 
-First, we compare the null model to the model from Method 1 above:
+Here we compared the fit of several different models.  We have forgone any multiple comparison corrections due to the high p-values resulting from **all** of the models below.  If any of these models had p-values less than 0.05, we would have controlled the family-wise error rate via a Bonferroni correction.
+
+First, we compared the null model to the model from Method 1 above:
 
 ```{r olr.M0}
-#Null model, no predictors
+# Null model, no predictors
 olr.M0 <- polr(difficulty~1, data=clean_data)   
 ```
 
 
 ```{r olr.M1}
-#Full model
+# Full model (additive)
 olr.M1 <- polr(difficulty~sex+math_skill+friend_with_prog+prog_exp, data=clean_data)
 ```
 
@@ -343,8 +343,12 @@ Another issue of our survey is that the level of "self-reported" information is 
 
 Originally when we were designing our survey, we thought it was very logical to make our variables categorical and ordinal, even our response variable (i.e. self-perceived difficulty of DSCI 512). However, while we were performing analyses and tests with our data, we realized that because our variables were not numerical, we lost a lot of flexibility with our analysis. If, for example, our response variable was numerical, we could have performed more tests such as ANOVA. Furthermore, if we found that numerical data does not work with our analysis, we could have binned them to become categorical. We feel that only using categorical data limited our ability to perform different analysis, and if we were to perform similar research in the future, this is definitely something we would change.
 
----
+# 6.0 References
 
+1. [How to use Multinomial and Ordinal Logistic Regression in R ?](https://www.analyticsvidhya.com/blog/2016/02/multinomial-ordinal-logistic-regression/)
+2. [Ordinal logistic regression](https://stats.idre.ucla.edu/r/dae/ordinal-logistic-regression/)
+
+---
 
 - Your target audience is other Data Scientists who are not familiar with your project.
 - Clearly introduce the survey topic and question you were interested in answering.
