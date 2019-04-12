@@ -1,8 +1,11 @@
 ---
 title: "Milestone 3 - Report"
-date: \`r format(Sys.Date(), " %Y-%m-%d")`\
+date: "Date: 2019/04/22"  
 author: "Author: Patrick Tung, PAUL VIAL and  Mengda (Albert) Yu"
-output: github_document
+output:
+   github_document:
+     toc: true
+     toc_depth: 2
 ---
 
 ```{r setup, include=FALSE}
@@ -11,6 +14,7 @@ suppressPackageStartupMessages(library(MASS))
 suppressPackageStartupMessages(library(tidyverse))
 suppressPackageStartupMessages(library(knitr))
 suppressPackageStartupMessages(library(lmtest))
+suppressPackageStartupMessages(library(car))
 ```
 
 ```{r prepare data, echo=FALSE}
@@ -32,13 +36,13 @@ clean_data <-
          math_skill = factor(math_skill,
                                 levels=c("Below Average",
                                          "Average",
-                                         "Above Average"), ordered=TRUE),
+                                         "Above Average"), ordered=FALSE),
          friend_with_prog = as_factor(friend_with_prog),
          prog_exp = factor(prog_exp,
                               levels=c("None",
                                        "Less than 100 hours",
                                        "Less than 1000 hours",
-                                       "More than 1000 hours"), ordered=TRUE),
+                                       "More than 1000 hours"), ordered=FALSE),
          difficulty = factor(difficulty,
                                 levels=c("Easier than average",
                                          "Average",
@@ -48,52 +52,68 @@ clean_data <-
 
 ```   
 
-# Introduction
+# 1.0 Introduction
 
 As the Master of Data science program is soon to end, we all like to reflect on the courses we have taken. Some courses we took were difficult and some were relatively easier, but the true question is, how was this affected based on our prior experience. DSCI 512 is a programming and algorithms course in the MDS program at UBC which introduces fundamental algorithms such as sorting and searching, as well as data structures.This project is to analyze whether the level of programming experience prior to the MDS program affects an MDS student's self-perceived difficulty of DSCI 512 materials.
+
+Question: Does their level of programming experience prior to the MDS program influence a person's self-perceived difficulty of DSCI 512 (Algorithms and Data Structures)?
+
+We began with defining null hypothesis and alternative hypothesis, as shown below.
 
 > Null hypothesis: The level of programming experience prior to the MDS program does not influence a person's self-perceived difficulty regarding DSCI 512.
 
 > Alternative hypothesis: The level of programming experience prior to the MDS program influences a person's self-perceived difficulty regarding DSCI 512.
 
 After extensive brainstorming, we decided that the variables we believe that are important are:
+
 - Previous programming experience
 - Sex
 - Mathematics skill level
 - Whether or not a student has friends or family with programming experience
 
-# Data description
+# 2.0 Data description
 
 To gather the data, we created a survey and collected 56 observations from our fellow MDS students, 554 TAs and lab instructor for self-perceived difficulty of the DSCI 512 course.
 
+
 | Variable | Name | Type | Description |
-|---|---|---|---|
+|:---:|:---:|:---:|:---:|
 | Confounder | `sex` | category | Female or Male |
 | Confounder | `math_skill` | ordinal | Self-reported Math skills (Below average, Average, Above average) |
 | Confounder | `friend_with_prog` |  category | Friends who have jobs associated with programming (No, Yes)|
 | Main Covariate | `prog_exp` | ordinal | Previous programming experience prior to the MDS in hour (None, Less than 100 hours, Less than 1000 hours, More than 1000 hours) |
 | Outcome | `difficulty` | ordinal | Self-perceived difficulty (Easier than average, Average, More difficult than average) |
 
-```{r summary table, echo=FALSE}
+
+```{r summary table 1, echo=FALSE, fig.align='center'}
 # cross classication counts for difficulty by sex
 kable(prop.table(table(clean_data$difficulty, clean_data$sex)))
+```
 
+
+```{r summary table 2, echo=FALSE, fig.align='center'}
 # cross classication counts for difficulty by math_skill
 kable(prop.table(table(clean_data$difficulty, clean_data$math_skill)))
+```
 
+
+```{r summary table 3, echo=FALSE, fig.align='center'}
 # cross classication counts for difficulty by friend_with_prog
 kable(prop.table(table(clean_data$difficulty, clean_data$friend_with_prog)))
+```
 
+
+```{r summary table 4, echo=FALSE, fig.align='center'}
 # cross classication counts for difficulty by prog_exp
 kable(prop.table(table(clean_data$difficulty, clean_data$prog_exp)))
 ```
 
 
-# Key EDA
+# 3.0 Key EDA
 
 We firstly did some preliminary investigations to understand the data and discover important patterns.
 
-```{r Figure1, echo=FALSE}
+```{r Figure1, echo=FALSE,fig.align='center'}
 clean_data %>% ggplot(aes(prog_exp, difficulty)) +
   geom_bin2d() +
   theme_bw() +
@@ -108,11 +128,12 @@ clean_data %>% ggplot(aes(prog_exp, difficulty)) +
   ) +
   scale_fill_continuous(breaks = c(1, 5, 9))
 ```
+
 *Figure 1.*
 
 It can be seen that the number of students who have been experiencing a harder time in DSCI 512 is greater than the number of students who felt easier than average.
 
-```{r Figure2, echo=FALSE}
+```{r Figure2, echo=FALSE, fig.align='center'}
 clean_data %>%
   ggplot() +
   theme_bw() +
@@ -123,12 +144,13 @@ clean_data %>%
   geom_bar(aes(difficulty)) +
   facet_wrap(~prog_exp)
 ```
+
 *Figure 2.*
 
 For the group without no programming experience, more people felt difficult, which makes senes that if students have no programming experiences, they are more likely to strggule with assginments and tests. It is also interesting to note that the difficulty reported by the most of students is average in the rest three other groups (less than 100, less than 1000 hours, More than 1000 hours) and only a few students felt more difficult or less difficult than average.
 
 
-```{r figure3, echo=FALSE}
+```{r figure3, echo=FALSE, fig.align='center'}
 clean_data %>%
   ggplot() +
   theme_bw() +
@@ -138,12 +160,13 @@ clean_data %>%
   theme(plot.title = element_text(size = 13, face = "bold", hjust = 0.5)) +
   geom_bar(aes(x = difficulty, fill=sex), position = "fill")
 ```
+
 *Figure 3.*
 
 The self-reported difficulty that most of male students felt is average. The number of female students who felt the course easy is actually greater than the number of male student who had the similiar feeling.
 
 
-```{r figure3, echo=FALSE}
+```{r figure4, echo=FALSE, fig.align='center'}
 clean_data %>%
   ggplot() +
   theme_bw() +
@@ -153,11 +176,12 @@ clean_data %>%
   theme(plot.title = element_text(size = 13, face = "bold", hjust = 0.5)) +
   geom_bar(aes(x = difficulty, fill = math_skill), position = "dodge")
 ```
+
 *Figure 4.*
 
 In this figure, we observe that the most of students who have proficiency in math felt that the difficulty of DSCI 512 is average. It seems like that the math skill does not affect the self-perceived difficulty.
 
-```{r figure3, echo=FALSE}
+```{r figure5, echo=FALSE, fig.align='center'}
 clean_data %>%
   ggplot() +
   theme_bw() +
@@ -167,18 +191,19 @@ clean_data %>%
   theme(plot.title = element_text(size = 13, face = "bold", hjust = 0.5)) +
   geom_bar(aes(x = friend_with_prog, fill = difficulty), position = "fill")
 ```
+
 *Figure 5.*
 
 It is interesting to note that the students who have no friend with programming experience are more likely to feel more difficult with course materials. If a student has friends with programming experience, he/she tends to feel the difficulty of the course is average.
 
 
-# Analysis
+# 4.0 Analysis
 
-To analyze our data, we decided to implement two different methods of testing: (1) Ordinal Regression Test and (2) Likelihood Ratio Test with Ordinal Regression.
+To analyze our data, we implemented two different methods of testing: (1) Ordinal Regression Test and (2) Likelihood Ratio Test with Ordinal Regression.
 
 ## Method 1 - Ordinal Regression Test
 
-### 1. Create model
+We decided to apply ordinal regression to test whether the main exposure `prog_exp` has a significant impact on our outcome `difficulty`. The orginal regression is used to facilitate the interaction of dependent variables (having multiple ordered levels) with one or more independent variables. 
 
 ```{r}
 m <- polr(difficulty~sex+math_skill+friend_with_prog+prog_exp, data=clean_data, Hess=TRUE)
@@ -210,9 +235,13 @@ ci <- confint(m)
 exp(cbind(OR = coef(m), ci))
 ```
 
+```{r}
+Anova(m, type = 3)
+```
+
 ## Method 2 - Likelihood Ratio Test with Ordinal Logistic Regression
 
-We decided to apply ordinal regression to test whether the main exposure `prog_exp` has a significant impact on our outcome `difficulty`. The orginal regression is used to facilitate the interaction of dependent variables (having multiple ordered levels) with one or more independent variables. In this case, because we are comparing the fit of multiple different models, we decided to adjust our p-values with the Bonferroni correction.
+In this case, because we are comparing the fit of multiple different models, we decided to adjust our p-values with the Bonferroni correction.
 
 ```{r olr.M0}
 #Null model, no predictors
@@ -236,20 +265,14 @@ lrtest(olr.M1, olr.M0)
 olr.M2 <- polr(difficulty~prog_exp, data=clean_data)
 ```
 
-```{r}
-olr.M2 <- polr(apply~pared+gpa, data=score) #Reduced model, without interaction.
-olr.M3 <- polr(apply~pared, data=score)     #Reduced model, with only pared.
-olr.M4 <- polr(apply~gpa, data=score)       #Reduced model, with only gpa.
-```
 
+# 5.0 Discussion
 
-# Discussion
-
-## Findings
+## 5.1 Findings
   1. Discussing the results and findings of your survey and analysis of the survey data.
 
 
-## Survey design
+## 5.2 Survey design
 Discussing your survey/study design, specifically:
 
 1. what did you do well to make this study as causal as possible?
