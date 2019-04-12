@@ -39,7 +39,7 @@ After extensive brainstorming, we decided that the variables we believe that are
 2.0 Data description
 ====================
 
-To gather the [data](https://github.ubc.ca/MDS-2018-19/DSCI_554_Project_data/blob/master/data.csv), we created a survey and collected 56 observations from our fellow MDS students, DSCI 554 TAs, and lab instructor for self-perceived difficulty of the DSCI 512 course.
+To gather the [data](https://github.ubc.ca/MDS-2018-19/DSCI_554_Project_data/blob/master/data.csv), we created a [survey](https://ubc.ca1.qualtrics.com/jfe/form/SV_abNhXIL4B4pM6sl) and collected 56 observations from our fellow MDS students, DSCI 554 TAs, and lab instructor for self-perceived difficulty of the DSCI 512 course.
 
 ![](summary_tbl.png)
 
@@ -233,7 +233,7 @@ lrtest(olr.M1, olr.M0)
     ## 1   9 -55.51                     
     ## 2   2 -57.17 -7 3.3203     0.8539
 
-Based on the p-value, this model does not provide a better fit than the null model. Next, we try a model using only our main independent variable, `prog_exp`:
+Based on the p-value, this model does not provide a better fit than the null model. Next, we tried a model using only our main independent variable, `prog_exp`:
 
 ``` r
 # Reduced model, with our main variable
@@ -253,9 +253,9 @@ lrtest(olr.M2, olr.M0)
     ## 1   5 -56.951                     
     ## 2   2 -57.170 -3 0.4385     0.9322
 
-This model provides an even worse fit compared to the null model.
+This model provided an even worse fit compared to the null model.
 
-Lastly, we try modelling an interaction between `friend_with_prog`, and `prog_exp`. The rationale here is that the effect of having a friend or family member with programming experience may vary based on personal programming experience. For example, a student with more than 1000 hours of programming experience may not benefit from having a friend or family member with programming experience because they already have the programming that the friend or family member might otherwise help them with. On the other hand, a student with no programming experience probably stands to benefit far more if they have a friend or family member who can help them with coding.
+Lastly, we tried modelling an interaction between `friend_with_prog`, and `prog_exp`. The rationale here is that the effect of having a friend or family member with programming experience may vary based on personal programming experience. For example, a student with more than 1000 hours of programming experience may not benefit from having a friend or family member with programming experience because they already have the programming that the friend or family member might otherwise help them with. On the other hand, a student with no programming experience probably stands to benefit far more if they have a friend or family member who can help them with coding.
 
 ``` r
 # Modeling a possible interaction
@@ -306,19 +306,17 @@ lrtest(olr.M4, olr.M0)
 5.2 Survey design
 -----------------
 
-Discussing your survey/study design, specifically:
+### Design
 
-1.  what did you do well to make this study as causal as possible?
+We put a lot of thought into which variables to include as potential confounders. Spending the proper amount of time on this before distributing the survey helped ensure that we did not realize additional potential confounders during our analysis when it would be too late to gather data to control for them. This diligence helped our end goal of reaching a conclusion free of spurious findings. We also made an assumption that relationship between each pair of outcome groups is the same.
 
-We put a lot of thought into which variables to include as potential confounders. Spending the proper amount of time on this before distributing the survey helped ensure that we did not realize additional potential confounders during our analysis when it would be too late to gather data to control for them. This diligence helped our end goal of reaching a conclusion free of spurious findings.
-
-1.  what was not done well and how did that effect your studies conclusions?
+### Limitations
 
 One of the biggest problems that we discovered after performing the analysis is that the amount of data we collected is simply not enough to make conclusive claims. Perhaps it would have been helpful if we decided to collect data from previous cohorts of the MDS program. It might also be better if we continued our research to allow future MDS cohorts to reflect and take the survey.
 
 Another issue of our survey is that the level of "self-reported" information is very subjective. An "Average" difficulty might mean something different to two different students. Therefore, it is quite difficult to evaluate the results of our research.
 
-1.  what would you do differently next time to improve your survey/study design and why?
+### Future Directions
 
 Originally when we were designing our survey, we thought it was very logical to make our variables categorical and ordinal, even our response variable (i.e. self-perceived difficulty of DSCI 512). However, while we were performing analyses and tests with our data, we realized that because our variables were not numerical, we lost a lot of flexibility with our analysis. If, for example, our response variable was numerical, we could have performed more tests such as ANOVA. Furthermore, if we found that numerical data does not work with our analysis, we could have binned them to become categorical. We feel that only using categorical data limited our ability to perform different analysis, and if we were to perform similar research in the future, this is definitely something we would change.
 
