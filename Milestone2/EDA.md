@@ -1,7 +1,7 @@
 Milestone 2 - EDA
 ================
 Author: Patrick Tung, PAUL VIAL and Mengda (Albert) Yu
- 2019-04-05
+ 2019-04-12
 
 1.0 Data Wrangling
 ==================
@@ -116,8 +116,8 @@ kable(table(clean_data$difficulty, clean_data$prog_exp))
 2.0 EDA
 =======
 
-2.1 EDA-1
----------
+2.1 Self-Perceived Difficulty
+-----------------------------
 
 ``` r
 clean_data %>%
@@ -132,8 +132,10 @@ clean_data %>%
 
 ![](EDA_files/figure-markdown_github/unnamed-chunk-4-1.png)
 
-2.2 EDA-2
----------
+Looking at the overall distribtion of the "self-perceived difficulty" of DSCI, we can see that most people generally though the course was quite difficult.
+
+2.2 - Programming Experience Prior to the Program
+-------------------------------------------------
 
 ``` r
 clean_data %>%
@@ -148,30 +150,35 @@ clean_data %>%
 
 ![](EDA_files/figure-markdown_github/unnamed-chunk-5-1.png)
 
-2.3 EDA-3
----------
+This figure is quite interesting because we saw a pretty consistent number of people across each category. It is also a little weird to see that there are nearly 10 people who have no programming experience prior to the program because, as a group, we thought that programming experience was a requirement for the program.
+
+2.3 - Self-Perceived Difficulty by Sex
+--------------------------------------
 
 ``` r
 clean_data %>%
-  ggplot() + 
+  ggplot() +
   theme_bw() +
   labs(x = "Self-preceived difficulty",
-    # y = "y",
+    y = "Ratio",
     title = "Self-perceived difficulty vs. Sex") +
-  theme(plot.title = element_text(size = 13, face = "bold", hjust = 0.5)) + 
-  geom_bar(aes(x = difficulty, fill = sex), position = "dodge") 
+  theme(plot.title = element_text(size = 13, face = "bold", hjust = 0.5)) +
+  geom_bar(aes(x = difficulty, fill=sex), position = "fill")
 ```
 
 ![](EDA_files/figure-markdown_github/unnamed-chunk-6-1.png)
 
-2.4 EDA-4
----------
+The self-reported difficulty that most of male students felt is average. The number of female students who felt the course easy is actually greater than the number of male student who had the same feeling.
+
+2.4 - Heatmap of Programming Experience vs. Difficulty
+------------------------------------------------------
 
 ``` r
-clean_data %>% ggplot(aes(difficulty, prog_exp)) +
+clean_data %>% ggplot(aes(prog_exp, difficulty)) +
   geom_bin2d() +
   theme_bw() +
-  labs(x = "Difficulty", y = "Programming Experience",
+  labs(y = "Self-perceived ifficulty",
+       x = "Programming Experience",
        title = "Heatmap of Programming Experience vs. Difficulty") +
   theme(plot.title = element_text(size = 13, face = "bold", hjust = 0.5)) +
   coord_fixed() +
@@ -183,3 +190,17 @@ clean_data %>% ggplot(aes(difficulty, prog_exp)) +
 ```
 
 ![](EDA_files/figure-markdown_github/unnamed-chunk-7-1.png)
+
+It can be seen that the number of students who have been experiencing a harder time in DSCI 512 is greater than the number of students who felt that is was easier than average.
+
+2.5 - Self-perceived difficulty vs. friend with programming experience
+----------------------------------------------------------------------
+
+<img src="EDA_files/figure-markdown_github/figure5-1.png" style="display: block; margin: auto;" />
+
+It is interesting to note that the students who have no friends with programming experience are more likely to feel more difficult with the course materials. If a student has friends with programming experience, he/she tends to think that the difficulty of the course is average.
+
+Conclusion
+==========
+
+Our data seemed to be very balanced overall, with people in all categories. Unfortunately, because our data is strictly only categorical, we did not have much to work with. Perhaps it would have been a little easier to see relationships if our self-perceived difficulty were numerical and continuous. However, there is still a lot of analysis that needs to be done in order to make any concrete judgements.
