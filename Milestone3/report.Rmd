@@ -74,7 +74,7 @@ After extensive brainstorming, we decided that the variables we believe that are
 
 # 2.0 Data description
 
-To gather the [data](https://github.ubc.ca/MDS-2018-19/DSCI_554_Project_data/blob/master/data.csv), we created a survey and collected 56 observations from our fellow MDS students, DSCI 554 TAs, and lab instructor for self-perceived difficulty of the DSCI 512 course.
+To gather the [data](https://github.ubc.ca/MDS-2018-19/DSCI_554_Project_data/blob/master/data.csv), we created a [survey](https://ubc.ca1.qualtrics.com/jfe/form/SV_abNhXIL4B4pM6sl) and collected 56 observations from our fellow MDS students, DSCI 554 TAs, and lab instructor for self-perceived difficulty of the DSCI 512 course.
 
 
 ![](summary_tbl.png)
