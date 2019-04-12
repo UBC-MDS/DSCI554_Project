@@ -131,7 +131,7 @@ clean_data %>% ggplot(aes(prog_exp, difficulty)) +
 
 *Figure 1.*
 
-It can be seen that the number of students who have been experiencing a harder time in DSCI 512 is greater than the number of students who felt easier than average.
+It can be seen that the number of students who have been experiencing a harder time in DSCI 512 is greater than the number of students who felt that is was easier than average.
 
 ```{r Figure2, echo=FALSE, fig.align='center'}
 clean_data %>%
@@ -163,7 +163,7 @@ clean_data %>%
 
 *Figure 3.*
 
-The self-reported difficulty that most of male students felt is average. The number of female students who felt the course easy is actually greater than the number of male student who had the similiar feeling.
+The self-reported difficulty that most of male students felt is average. The number of female students who felt the course easy is actually greater than the number of male student who had the same feeling.
 
 
 ```{r figure4, echo=FALSE, fig.align='center'}
@@ -179,7 +179,7 @@ clean_data %>%
 
 *Figure 4.*
 
-In this figure, we observe that the most of students who have proficiency in math felt that the difficulty of DSCI 512 is average. It seems like that the math skill does not affect the self-perceived difficulty.
+In this figure, we observe that the most of students who have proficiency in math felt that the difficulty of DSCI 512 is average. It seems that the math skill does not affect the self-perceived difficulty of the course.
 
 ```{r figure5, echo=FALSE, fig.align='center'}
 clean_data %>%
@@ -194,7 +194,7 @@ clean_data %>%
 
 *Figure 5.*
 
-It is interesting to note that the students who have no friend with programming experience are more likely to feel more difficult with course materials. If a student has friends with programming experience, he/she tends to feel the difficulty of the course is average.
+It is interesting to note that the students who have no friends with programming experience are more likely to feel more difficult with the course materials. If a student has friends with programming experience, he/she tends to think that the difficulty of the course is average.
 
 
 # 4.0 Analysis
