@@ -180,6 +180,7 @@ clean_data %>%
 Most male students reported average difficulty. The number of female students who felt the course was easy is greater than the number of male students who felt that way.
 
 
+
 ```{r figure4, echo=FALSE, fig.align='center'}
 clean_data %>%
   ggplot() +
@@ -193,7 +194,7 @@ clean_data %>%
 
 *Figure 4.*
 
-In this figure, we observe that most of the students who have proficiency in math felt that the difficulty of DSCI 512 was average. It seems that math skills do not affect self-perceived difficulty.
+In this figure, we observe that the most of students who have proficiency in math felt that the difficulty of DSCI 512 is average. It seems that the math skill does not affect the self-perceived difficulty of the course.
 
 ```{r figure5, echo=FALSE, fig.align='center'}
 clean_data %>%
@@ -208,7 +209,7 @@ clean_data %>%
 
 *Figure 5.*
 
-It is interesting to note that the students who have no friends or family with programming experience are more likely to experience difficulty. If a student has friends with programming experience, he/she tends to feel the difficulty of the course is average.
+It is interesting to note that the students who have no friends or family with programming experience are more likely to feel more difficult with the course materials. If a student has friends with programming experience, he/she tends to think that the difficulty of the course is average.
 
 
 # 4.0 Analysis
@@ -217,7 +218,7 @@ To analyze our data, we implemented two different methods of testing: (1) Ordina
 
 ## Method 1 - Ordinal Regression Test
 
-We decided to apply ordinal regression to test whether the main exposure `prog_exp` has a significant impact on our outcome `difficulty`. The orginal regression is used to facilitate the interaction of dependent variables (having multiple ordered levels) with one or more independent variables. 
+We decided to apply ordinal regression to test whether the main exposure `prog_exp` has a significant impact on our outcome `difficulty`. The orginal regression is used to facilitate the interaction of dependent variables (having multiple ordered levels) with one or more independent variables.
 
 ```{r}
 m <- polr(difficulty~sex+math_skill+friend_with_prog+prog_exp, data=clean_data, Hess=TRUE)
@@ -294,7 +295,7 @@ This model provides an even worse fit compared to the null model.
 Lastly, we try modelling an interaction between `friend_with_prog`, and `prog_exp`.  The rationale here is that the effect of having a friend or family member with programming experience may vary based on personal programming experience.  For example, a student with more than 1000 hours of programming experience may not benefit from having a friend or family member with programming experience because they already have the programming that the friend or family member might otherwise help them with.  On the other hand, a student with no programming experience probably stands to benefit far more if they have a friend or family member who can help them with coding.
 
 ```{r olr.M3}
-# Modeling a possible interaction 
+# Modeling a possible interaction
 olr.M3 <- polr(difficulty~friend_with_prog*prog_exp, data=clean_data)
 ```
 
@@ -334,7 +335,7 @@ We put a lot of thought into which variables to include as potential confounders
 
 2. what was not done well and how did that effect your studies conclusions?
 
-One of the biggest problems that we discovered after performing the analysis is that the amount of data we collected is simply not enough to make conclusive claims. Perhaps it would have been helpful if we decided to collect data from previous cohorts of the MDS program. It might also be better if we continued our research to allow future MDS cohorts to reflect and take the survey. 
+One of the biggest problems that we discovered after performing the analysis is that the amount of data we collected is simply not enough to make conclusive claims. Perhaps it would have been helpful if we decided to collect data from previous cohorts of the MDS program. It might also be better if we continued our research to allow future MDS cohorts to reflect and take the survey.
 
 Another issue of our survey is that the level of "self-reported" information is very subjective. An "Average" difficulty might mean something different to two different students. Therefore, it is quite difficult to evaluate the results of our research.
 
