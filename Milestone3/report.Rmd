@@ -260,11 +260,28 @@ olr.M1 <- polr(difficulty~sex+math_skill+friend_with_prog+prog_exp, data=clean_d
 lrtest(olr.M1, olr.M0)
 ```
 
-```{r}
-# Reduced model, with our main variabel
+
+```{r olr.M2}
+# Reduced model, with our main variable
 olr.M2 <- polr(difficulty~prog_exp, data=clean_data)
 ```
 
+
+```{r}
+# How does the model without any confounding variables perform?
+lrtest(olr.M2, olr.M0)
+```
+
+```{r olr.M3}
+# Modeling a possible interaction 
+olr.M3 <- polr(difficulty~friend_with_prog*prog_exp, data=clean_data)
+```
+
+
+```{r}
+# How does the interaction model perform?
+lrtest(olr.M3, olr.M0)
+```
 
 # 5.0 Discussion
 
