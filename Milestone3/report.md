@@ -116,31 +116,31 @@ To gather the data, we created a survey and collected 56 observations from our f
 
 We firstly did some preliminary investigations to understand the data and discover important patterns.
 
-![](report_files/figure-markdown_github/Figure1-1.png)
+<img src="report_files/figure-markdown_github/Figure1-1.png" style="display: block; margin: auto;" />
 
 *Figure 1.*
 
 It can be seen that the number of students who have been experiencing a harder time in DSCI 512 is greater than the number of students who felt easier than average.
 
-![](report_files/figure-markdown_github/Figure2-1.png)
+<img src="report_files/figure-markdown_github/Figure2-1.png" style="display: block; margin: auto;" />
 
 *Figure 2.*
 
 For the group without no programming experience, more people felt difficult, which makes senes that if students have no programming experiences, they are more likely to strggule with assginments and tests. It is also interesting to note that the difficulty reported by the most of students is average in the rest three other groups (less than 100, less than 1000 hours, More than 1000 hours) and only a few students felt more difficult or less difficult than average.
 
-![](report_files/figure-markdown_github/figure3-1.png)
+<img src="report_files/figure-markdown_github/figure3-1.png" style="display: block; margin: auto;" />
 
 *Figure 3.*
 
 The self-reported difficulty that most of male students felt is average. The number of female students who felt the course easy is actually greater than the number of male student who had the similiar feeling.
 
-![](report_files/figure-markdown_github/figure4-1.png)
+<img src="report_files/figure-markdown_github/figure4-1.png" style="display: block; margin: auto;" />
 
 *Figure 4.*
 
 In this figure, we observe that the most of students who have proficiency in math felt that the difficulty of DSCI 512 is average. It seems like that the math skill does not affect the self-perceived difficulty.
 
-![](report_files/figure-markdown_github/figure5-1.png)
+<img src="report_files/figure-markdown_github/figure5-1.png" style="display: block; margin: auto;" />
 
 *Figure 5.*
 
