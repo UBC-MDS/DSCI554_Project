@@ -3,3 +3,6 @@
 /.Rproj.user/**/
 .Rhistory
 *.Rproj
+.Rproj.user
+.Rhistory
+.RData

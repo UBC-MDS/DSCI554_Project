@@ -150,7 +150,8 @@ clean_data %>%
     # y = "y",
     title = "Self-perceived difficulty vs. math skill") +
   theme(plot.title = element_text(size = 13, face = "bold", hjust = 0.5)) +
-  geom_bar(aes(x = difficulty, fill = math_skill), position = "dodge")
+  geom_bar(aes(x = difficulty, fill = math_skill), position = "dodge") +
+  scale_fill_brewer(palette="Set1")
 ```
  
  <p style="text-align:center;">Figure 4.</p>
@@ -165,7 +166,9 @@ clean_data %>%
     y = "ratio",
     title = "Self-perceived difficulty vs. friend with programming experience") +
   theme(plot.title = element_text(size = 13, face = "bold", hjust = 0.5)) +
-  geom_bar(aes(x = friend_with_prog, fill = difficulty), position = "fill")
+  geom_bar(aes(x = friend_with_prog, fill = difficulty), position = "fill") +
+  scale_fill_brewer(palette="Set1")
+
 ```
 
  <p style="text-align:center;">Figure 5.</p>
