@@ -14,14 +14,12 @@ Date: 2019/04/12
     -   [5.2 Survey design](#survey-design)
 -   [6.0 References](#references)
 
-------------------------------------------------------------------------
-
 1.0 Introduction
 ================
 
 As the Master of Data science program is soon to end, we all like to reflect on the courses we have taken. Some courses we took were difficult and some were relatively easy, but the true question is, how was this affected by our prior experience. DSCI 512 is a programming and algorithms course in the MDS program at UBC which introduces fundamental algorithms such as sorting and searching, as well as data structures. This project is to analyze whether the level of programming experience prior to the MDS program affects an MDS student's self-perceived difficulty of DSCI 512 materials.
 
-Question: Does their level of programming experience prior to the MDS program influence a person's self-perceived difficulty of DSCI 512 (Algorithms and Data Structures)?
+**Question**: Does their level of programming experience prior to the MDS program influence a person's self-perceived difficulty of DSCI 512 (Algorithms and Data Structures)?
 
 We began with defining a null hypothesis and alternative hypothesis, as shown below.
 
@@ -44,38 +42,6 @@ To gather the [data](https://github.ubc.ca/MDS-2018-19/DSCI_554_Project_data/blo
 ![](summary_tbl.png)
 
 *Table 1: Surveyed Variables*
-
-|                             |     Female|       Male|
-|-----------------------------|----------:|----------:|
-| Easier than average         |  0.1071429|  0.0535714|
-| Average                     |  0.1428571|  0.3035714|
-| More difficult than average |  0.1607143|  0.2321429|
-
-*Table 2: Cross classication proportions for difficulty by sex*
-
-|                             |  Below Average|    Average|  Above Average|
-|-----------------------------|--------------:|----------:|--------------:|
-| Easier than average         |      0.0178571|  0.0892857|      0.0535714|
-| Average                     |      0.0178571|  0.0535714|      0.3750000|
-| More difficult than average |      0.0178571|  0.1071429|      0.2678571|
-
-*Table 3: Cross classication proportions for difficulty by math skills*
-
-|                             |        Yes|         No|
-|-----------------------------|----------:|----------:|
-| Easier than average         |  0.1071429|  0.0535714|
-| Average                     |  0.3750000|  0.0714286|
-| More difficult than average |  0.2321429|  0.1607143|
-
-*Table 4: Cross classication proportions for difficulty by friends or family with programming experience*
-
-|                             |       None|  Less than 100 hours|  Less than 1000 hours|  More than 1000 hours|
-|-----------------------------|----------:|--------------------:|---------------------:|---------------------:|
-| Easier than average         |  0.0535714|            0.0357143|             0.0178571|             0.0535714|
-| Average                     |  0.0178571|            0.1428571|             0.1607143|             0.1250000|
-| More difficult than average |  0.0892857|            0.1071429|             0.1071429|             0.0892857|
-
-*Table 5: Cross classication proportions for difficulty by programming experience*
 
 3.0 Key EDA
 ===========
@@ -181,7 +147,7 @@ ctable %>% kable()
 | Easier than average|Average         |  -0.6713122|   1.5074144|  -0.4453401|  0.6560740|
 | Average|More difficult than average |   1.5127481|   1.5184046|   0.9962747|  0.3191167|
 
-*Table 6. P-value of coefficients and intercepts*
+*Table 2. P-value of coefficients and intercepts*
 
 We can observe from table 6 that all p-values are greater than a typical threshold 0.05, which indicates that a significant difference exists. In other words, the different level of programming experience prior to the MDS program does not affect the MDS students' self-perceived difficulty of DSCI 512.
 
@@ -303,10 +269,30 @@ lrtest(olr.M4, olr.M0)
 
 1.  Discussing the results and findings of your survey and analysis of the survey data.
 
+The main aspect of our analysis is to investigate the influence of prior programming experience on the outcome, self-perceived difficulty of DSCI 512, based on the assumption that the relationship between each pair of outcome groups is the same. We identified three other confounding variables, sex, mathematics skill level and whether or not a student has friends or family with programming experience. In this report, we analyzed the relationship between the main exposure and the outcome, as well as determined the casual effect of those confounders.
+
+We performed two methods of testing, basic ordinal logistic regression test and likelihood ratio test between multiple pairs of models.
+
+In the ordinal logistic regression, we found that none of exposure variable has p-values greater than 0.05, which indicates that we do not evidence to reject the null hypothesis. The Anova type 3 test also provides similar results.
+
+|                                     |       Value|  Std. Error|     t value|    p value|
+|-------------------------------------|-----------:|-----------:|-----------:|----------:|
+| prog\_expLess than 100 hours        |  -0.1728359|   0.8931988|  -0.1935021|  0.8465657|
+| prog\_expLess than 1000 hours       |   0.0341831|   0.9173926|   0.0372611|  0.9702768|
+| prog\_expMore than 1000 hours       |  -0.1663964|   0.9369797|  -0.1775880|  0.8590465|
+| sexMale                             |   0.3358303|   0.5399724|   0.6219398|  0.5339814|
+| math\_skillAverage                  |   0.3307642|   1.3669667|   0.2419695|  0.8088038|
+| math\_skillAbove Average            |   0.8856973|   1.2939238|   0.6845050|  0.4936563|
+| friend\_with\_progNo                |   0.7793453|   0.6379616|   1.2216178|  0.2218522|
+| Easier than average|Average         |  -0.6713122|   1.5074144|  -0.4453401|  0.6560740|
+| Average|More difficult than average |   1.5127481|   1.5184046|   0.9962747|  0.3191167|
+
+> > ??? comparison results
+
 5.2 Survey design
 -----------------
 
-### Design
+### Design and Assumption
 
 We put a lot of thought into which variables to include as potential confounders. Spending the proper amount of time on this before distributing the survey helped ensure that we did not realize additional potential confounders during our analysis when it would be too late to gather data to control for them. This diligence helped our end goal of reaching a conclusion free of spurious findings. We also made an assumption that relationship between each pair of outcome groups is the same.
 
@@ -318,7 +304,7 @@ Another issue of our survey is that the level of "self-reported" information is 
 
 ### Future Directions
 
-Originally when we were designing our survey, we thought it was very logical to make our variables categorical and ordinal, even our response variable (i.e. self-perceived difficulty of DSCI 512). However, while we were performing analyses and tests with our data, we realized that because our variables were not numerical, we lost a lot of flexibility with our analysis. If, for example, our response variable was numerical, we could have performed more tests such as ANOVA. Furthermore, if we found that numerical data does not work with our analysis, we could have binned them to become categorical. We feel that only using categorical data limited our ability to perform different analysis, and if we were to perform similar research in the future, this is definitely something we would change.
+Originally when we were designing our survey, we thought it was very logical to make our variables categorical and ordinal, even our response variable (i.e. self-perceived difficulty of DSCI 512). However, while we were performing analyses and tests with our data, we realized that because our variables were not numerical, we lost a lot of flexibility with our analysis. If, for example, our response variable was numerical, we could have performed more tests such as simple ANOVA test. Furthermore, if we found that numerical data does not work with our analysis, we could have binned them to become categorical. We feel that only using categorical data limited our ability to perform different analysis, and if we were to perform similar research in the future, this is definitely something we would change.
 
 6.0 References
 ==============
