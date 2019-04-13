@@ -294,6 +294,8 @@ Similarly, when we compared multiple alternative models via the likelihood ratio
 
 We put a lot of thought into which variables to include as potential confounders.  Spending the proper amount of time on this before distributing the survey helped ensure that we did not realize additional potential confounders during our analysis when it would be too late to gather data to control for them.  This diligence helped our end goal of reaching a conclusion free of spurious findings. We also made an assumption that relationship between each pair of outcome groups is the same.
 
+We also streamlined our survey questions to lighten the cognitive load on participants.  We believe this helped us maximize our sample size.  Unfortunately, this involved lowering the number of intervals in our observed variables to a point where we could only analyze them as categorical variables.  This problem is discussed further under **Future Directions**, below.
+
 ### Limitations
 
 One of the biggest problems that we discovered after performing the analysis is that the amount of data we collected is simply not enough to make conclusive claims. Perhaps it would have been helpful if we decided to collect data from previous cohorts of the MDS program. It might also be better if we continued our research to allow future MDS cohorts to reflect and take the survey.
