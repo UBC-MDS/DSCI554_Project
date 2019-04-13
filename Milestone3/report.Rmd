@@ -56,7 +56,7 @@ clean_data <-
 
 As the Master of Data science program is soon to end, we all like to reflect on the courses we have taken. Some courses we took were difficult and some were relatively easy, but the true question is, how was this affected by our prior experience. DSCI 512 is a programming and algorithms course in the MDS program at UBC which introduces fundamental algorithms such as sorting and searching, as well as data structures. This project is to analyze whether the level of programming experience prior to the MDS program affects an MDS student's self-perceived difficulty of DSCI 512 materials.
 
-__Question__: Does their level of programming experience prior to the MDS program influence a person's self-perceived difficulty of DSCI 512 (Algorithms and Data Structures)?
+__Question__: Does the level of programming experience prior to the MDS program influence a person's self-perceived difficulty of DSCI 512 (Algorithms and Data Structures)?
 
 We began with defining a null hypothesis and an alternative hypothesis, as shown below.
 
@@ -190,7 +190,7 @@ m <- polr(difficulty~ prog_exp + sex+math_skill + friend_with_prog, data=clean_d
 summary(m)
 ```
 
-The output of coefficients table contains the values of each coefficients, standard error and t values. Residual deviance and AIC are useful for later model comparison.
+The output of coefficients table contains the values of each coefficients, standard error and t values. Residual deviance and AIC are useful model comparisons later.
 
 We calculated the p-values by comparing the t-value against the standard normal distribution and assumed that our data set is large enough.  
 
@@ -220,7 +220,7 @@ We also applied [Anova type 3](https://mcfromnz.wordpress.com/2011/03/02/anova-t
 Anova(m, type = 3)
 ```
 
-It can be clearly seen that the results also suggest that neither one of variables has a significant impact on the outcome variable `difficulty`. 
+It can be clearly seen that the results also suggest that neither one of the variables had a significant impact on the outcome variable `difficulty`. 
 
 ## 4.2 Method 2 - Likelihood Ratio Test with Ordinal Logistic Regression
 
@@ -286,7 +286,7 @@ We performed two methods of testing, basic ordinal logistic regression test and 
 
 In the ordinal logistic regression, we found that none of exposure variable has p-values greater than 0.05 in table 2, which indicates that we do not have evidence to reject the null hypothesis. The Anova type 3 test also provides similar results.
 
-Similarly, when we compared multiple alternative models via the likelihood ratio test, we did not find any that were a significantly better fit than the null model.  Therefore, this method also indicates that we do not have sufficient evidence to reject the null hypothesis.
+Similarly, when we compared multiple alternative models via the likelihood ratio test, we did not find any that were a significantly better fit than the null model. Therefore, this method also indicates that we do not have sufficient evidence to reject the null hypothesis.
 
 ## 5.2 Survey design
 
