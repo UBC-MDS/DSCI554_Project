@@ -284,7 +284,7 @@ The main aspect of our analysis is to investigate the influence of prior program
 
 We performed two methods of testing, basic ordinal logistic regression test and likelihood ratio test between multiple pairs of models. 
 
-In the ordinal logistic regression, we found that none of exposure variable has p-values greater than 0.05 in table 2, which indicates that we do not evidence to reject the null hypothesis. The Anova type 3 test also provides similar results.
+In the ordinal logistic regression, we found that none of exposure variable has p-values greater than 0.05 in table 2, which indicates that we do not have evidence to reject the null hypothesis. The Anova type 3 test also provides similar results.
 
 Similarly, when we compared multiple alternative models via the likelihood ratio test, we did not find any that were a significantly better fit than the null model.  Therefore, this method also indicates that we do not evidence to reject the null hypothesis.
 
