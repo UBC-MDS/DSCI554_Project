@@ -113,7 +113,11 @@ clean_data %>%
        title = "Heatmap of Programming Experience vs. Difficulty") +
   theme(plot.title = element_text(size = 13, face = "bold", hjust = 0.5)) +
   geom_bar(aes(difficulty)) +
-  facet_wrap(~prog_exp)
+  facet_wrap(~prog_exp) +
+  scale_x_discrete(
+    labels = function(difficulty)
+      str_wrap(difficulty, width = 14)
+  )
 ```
 
  <p style="text-align:center;">Figure 2.</p>
@@ -146,7 +150,8 @@ clean_data %>%
     # y = "y",
     title = "Self-perceived difficulty vs. math skill") +
   theme(plot.title = element_text(size = 13, face = "bold", hjust = 0.5)) +
-  geom_bar(aes(x = difficulty, fill = math_skill), position = "dodge")
+  geom_bar(aes(x = difficulty, fill = math_skill), position = "dodge") +
+  scale_fill_brewer(palette="Set1")
 ```
  
  <p style="text-align:center;">Figure 4.</p>
@@ -161,7 +166,9 @@ clean_data %>%
     y = "ratio",
     title = "Self-perceived difficulty vs. friend with programming experience") +
   theme(plot.title = element_text(size = 13, face = "bold", hjust = 0.5)) +
-  geom_bar(aes(x = friend_with_prog, fill = difficulty), position = "fill")
+  geom_bar(aes(x = friend_with_prog, fill = difficulty), position = "fill") +
+  scale_fill_brewer(palette="Set1")
+
 ```
 
  <p style="text-align:center;">Figure 5.</p>
@@ -269,24 +276,10 @@ lrtest(olr.M3, olr.M0)
 
 Again, this does not yeild a better fit than the null model.
 
-```{r olr.M4}
-# TBD: Shoud we try this?
-olr.M4 <- polr(difficulty~sex+math_skill+friend_with_prog*prog_exp, data=clean_data)
-
-```
-
-
-```{r}
-#Are all variables good predictors?
-lrtest(olr.M4, olr.M0)
-```
-
 
 # 5.0 Discussion
 
 ## 5.1 Findings
-
-1. Discussing the results and findings of your survey and analysis of the survey data.
   
 The main aspect of our analysis is to investigate the influence of prior programming experience on the outcome, self-perceived difficulty of DSCI 512, based on the assumption that the relationship between each pair of outcome groups is the same. We identified three other confounding variables, sex, mathematics skill level and whether or not a student has friends or family with programming experience. In this report, we analyzed the relationship between the main exposure and the outcome, as well as determined the casual effect of those confounders.
 
@@ -298,14 +291,17 @@ In the ordinal logistic regression, we found that none of exposure variable has 
 ctable %>% kable()
 ```
 
+*Table 2. P-value of coefficients and intercepts*
 
->> ??? comparison results 
+Similarly, when we compared multiple alternative models via the likelihood ratio test, we did not find any that were a significantly better fit than the null model.  Therfore, this method also indicates that we do not evidence to reject the null hypothesis.
 
 ## 5.2 Survey design
 
 ### Design and Assumption
 
 We put a lot of thought into which variables to include as potential confounders.  Spending the proper amount of time on this before distributing the survey helped ensure that we did not realize additional potential confounders during our analysis when it would be too late to gather data to control for them.  This diligence helped our end goal of reaching a conclusion free of spurious findings. We also made an assumption that relationship between each pair of outcome groups is the same.
+
+We also streamlined our survey questions to lighten the cognitive load on participants.  We believe this helped us maximize our sample size.  Unfortunately, this involved lowering the number of intervals in our observed variables to a point where we could only analyze them as categorical variables.  This problem is discussed further under **Future Directions**, below.
 
 ### Limitations
 
@@ -324,13 +320,3 @@ Originally when we were designing our survey, we thought it was very logical to 
 
 ---
 
-- Your target audience is other Data Scientists who are not familiar with your project.
-- Clearly introduce the survey topic and question you were interested in answering.
-- Link to your study's data and code in the methods section of your report.
-- Include effective visualizations and/or tables that help communicate your findings.
-- Your discussion should have 2 key focuses:
-  1. Discussing the results and findings of your survey and analysis of the survey data.
-  2. Discussing your survey/study design, specifically:
-    - what did you do well to make this study as causal as possible?
-    - what was not done well and how did that effect your studies conclusions?
-    - what would you do differently next time to improve your survey/study design and why?

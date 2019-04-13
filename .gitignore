@@ -1,5 +1,8 @@
 .DS_Store
 **.csv
+/.Rproj.user/**/
+.Rhistory
+*.Rproj
 .Rproj.user
 .Rhistory
-DSCI_554_Project.Rproj
+.RData
