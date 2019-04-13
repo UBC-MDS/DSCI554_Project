@@ -3,7 +3,7 @@ title: "Milestone 3 - Report"
 date: "Date: 2019/04/12"  
 author: "Authors: Patrick Tung, Paul Vial, and  Mengda (Albert) Yu"
 output:
-   github_document:
+  github_document:
      toc: true
      toc_depth: 2
 ---
@@ -58,7 +58,7 @@ As the Master of Data science program is soon to end, we all like to reflect on 
 
 __Question__: Does their level of programming experience prior to the MDS program influence a person's self-perceived difficulty of DSCI 512 (Algorithms and Data Structures)?
 
-We began with defining a null hypothesis and alternative hypothesis, as shown below.
+We began with defining a null hypothesis and an alternative hypothesis, as shown below.
 
 > **Null hypothesis:** The level of programming experience prior to the MDS program does not influence a person's self-perceived difficulty regarding DSCI 512.
 
@@ -122,7 +122,7 @@ clean_data %>%
 
  <p style="text-align:center;">Figure 2.</p>
 
-The group without programming experience had the greatest proportion of people that found the course to be difficult.  It makes sense that if students have no programming experiences, they are more likely to struggle with assignments and tests. It is also interesting that the most commonly reported level of difficulty was "Average" across the three other groups (less than 100, less than 1000 hours, More than 1000 hours), and that relatively few students found the course to be more difficult or less difficult than average.
+The group without programming experience had the greatest proportion of people that found the course to be difficult.  It makes sense that if students have no programming experiences, they are more likely to struggle with assignments and tests. It is also interesting to note that the most commonly reported level of difficulty was "Average" across the three other groups (less than 100, less than 1000 hours, More than 1000 hours), and that relatively few students found the course to be more difficult or less difficult than average.
 
 
 ```{r figure3, echo=FALSE, fig.align='center'}
@@ -141,7 +141,6 @@ clean_data %>%
 Most male students reported average difficulty. The number of female students who felt the course was easy is greater than the number of male students who felt that way.
 
 
-
 ```{r figure4, echo=FALSE, fig.align='center'}
 clean_data %>%
   ggplot() +
@@ -156,7 +155,7 @@ clean_data %>%
  
  <p style="text-align:center;">Figure 4.</p>
 
-In this figure, we observe that the most of students who have proficiency in math felt that the difficulty of DSCI 512 is average. It seems that the math skill does not affect the self-perceived difficulty of the course.
+In this figure, we observed that the most of students who have proficiency in math felt that the difficulty of DSCI 512 is average. It seems that the math skill does not affect the self-perceived difficulty of the course.
 
 ```{r figure5, echo=FALSE, fig.align='center'}
 clean_data %>%
@@ -178,11 +177,11 @@ It is interesting to note that the students who have no friends or family with p
 
 # 4.0 Analysis
 
-To analyze our data, we implemented two different methods of testing: (1) Ordinal Logistic Regression Test and (2) Likelihood Ratio Test with multiple Ordinal Regression Models.
+To analyze our data, we implemented two methods of testing: (1) Ordinal Logistic Regression Test and (2) Likelihood Ratio Test with multiple Ordinal Regression Models.
 
 ## 4.1 Method 1 - Ordinal Logistic Regression Test
 
-We decided to apply ordinal regression to test whether the main exposure `prog_exp` with some confounders have a significant impact on our outcome `difficulty`. The orginal regression is used to facilitate the interaction of dependent variables (having multiple ordered levels) with one or more independent variables. We used the polr from `MASS` package to estimate the OLR model. We also had `Hess = TRUE` to return the observed information matrix from optimaization for standard error.
+We decided to apply ordinal regression to test whether the main exposure `prog_exp` with some confounders have a significant impact on our outcome `difficulty`. The original regression is used to facilitate the interaction of dependent variables (having multiple ordered levels) with one or more independent variables. We used the polr from `MASS` package to estimate the OLR model. We also had `Hess = TRUE` to return the observed information matrix from optimization for standard error.
 
 ```{r}
 # fit ordered logit regression model 
@@ -191,7 +190,7 @@ m <- polr(difficulty~ prog_exp + sex+math_skill + friend_with_prog, data=clean_d
 summary(m)
 ```
 
-The output of coefficents table contains the values of each coefficients, standard error and t values. Residual deviance and AIC are useful for later model comparison.
+The output of coefficients table contains the values of each coefficients, standard error and t values. Residual deviance and AIC are useful for later model comparison.
 
 We calculated the p-values by comparing the t-value against the standard normal distribution and assumed that our data set is large enough.  
 
@@ -204,9 +203,9 @@ ctable <- cbind(ctable, "p value" = p)
 ctable %>% kable()
 ```
 
-*Table 2. P-value of coefficients and intercepts*
+*Table 2. P-values of coefficients and intercepts*
  
-We can observe from table 6 that all p-values are greater than a typical threshold 0.05, which indicates that a significant difference exists. In other words, the different level of programming experience prior to the MDS program does not affect the MDS students' self-perceived difficulty of DSCI 512.
+We can observe from table 6 that all p-values are greater than a typical threshold 0.05, which indicates that no significant difference exists. In other words, the different level of programming experience prior to the MDS program does not affect the MDS students' self-perceived difficulty of DSCI 512. The other exposure variables neither influence the outcome variable.
 
 ```{r, echo=FALSE, eval=FALSE}
 ## Odd Ratios and CI 
@@ -221,11 +220,11 @@ We also applied [Anova type 3](https://mcfromnz.wordpress.com/2011/03/02/anova-t
 Anova(m, type = 3)
 ```
 
-As shown above, it can be clearly seen that the results suggest that neither one of variables has a significant impact on the outcome variable `difficulty`. 
+It can be clearly seen that the results also suggest that neither one of variables has a significant impact on the outcome variable `difficulty`. 
 
 ## 4.2 Method 2 - Likelihood Ratio Test with Ordinal Logistic Regression
 
-Here we compared the fit of several different models.  We have forgone any multiple comparison corrections due to the high p-values resulting from **all** of the models below.  If any of these models had p-values less than 0.05, we would have controlled the family-wise error rate via a Bonferroni correction.
+Here we compared the fit of several different models.  We have forgone any multiple comparison corrections due to the high p-values resulting from **all** of the models below.  If any of these models had p-values less than 0.05, we would have adjusted the family-wise error rate via a Bonferroni correction.
 
 First, we compared the null model to the model from Method 1 above:
 
@@ -242,7 +241,7 @@ olr.M1 <- polr(difficulty~sex+math_skill+friend_with_prog+prog_exp, data=clean_d
 
 
 ```{r}
-#Are all variables good predictors?
+# Are all variables good predictors?
 lrtest(olr.M1, olr.M0)
 ```
 
@@ -274,26 +273,20 @@ olr.M3 <- polr(difficulty~friend_with_prog*prog_exp, data=clean_data)
 lrtest(olr.M3, olr.M0)
 ```
 
-Again, this does not yeild a better fit than the null model.
+Again, this does not yield a better fit than the null model.
 
 
 # 5.0 Discussion
 
 ## 5.1 Findings
   
-The main aspect of our analysis is to investigate the influence of prior programming experience on the outcome, self-perceived difficulty of DSCI 512, based on the assumption that the relationship between each pair of outcome groups is the same. We identified three other confounding variables, sex, mathematics skill level and whether or not a student has friends or family with programming experience. In this report, we analyzed the relationship between the main exposure and the outcome, as well as determined the casual effect of those confounders.
+The main aspect of our analysis is to investigate the influence of prior programming experience on the outcome, self-perceived difficulty of DSCI 512, based on the assumption that the relationship between each pair of outcome groups is the same. Before the analysis, we identified three other confounding variables, sex, mathematics skill level and whether or not a student has friends or family with programming experience. In this report, we analyzed the relationship between the main exposure `prog_exp` and the outcome `difficulty`, as well as determined the casual effect of those confounders.
 
 We performed two methods of testing, basic ordinal logistic regression test and likelihood ratio test between multiple pairs of models. 
 
-In the ordinal logistic regression, we found that none of exposure variable has p-values greater than 0.05, which indicates that we do not evidence to reject the null hypothesis. The Anova type 3 test also provides similar results.
+In the ordinal logistic regression, we found that none of exposure variable has p-values greater than 0.05 in table 2, which indicates that we do not evidence to reject the null hypothesis. The Anova type 3 test also provides similar results.
 
-```{r, echo=FALSE}
-ctable %>% kable()
-```
-
-*Table 2. P-value of coefficients and intercepts*
-
-Similarly, when we compared multiple alternative models via the likelihood ratio test, we did not find any that were a significantly better fit than the null model.  Therfore, this method also indicates that we do not evidence to reject the null hypothesis.
+Similarly, when we compared multiple alternative models via the likelihood ratio test, we did not find any that were a significantly better fit than the null model.  Therefore, this method also indicates that we do not evidence to reject the null hypothesis.
 
 ## 5.2 Survey design
 
@@ -317,6 +310,4 @@ Originally when we were designing our survey, we thought it was very logical to 
 
 1. [How to use Multinomial and Ordinal Logistic Regression in R ?](https://www.analyticsvidhya.com/blog/2016/02/multinomial-ordinal-logistic-regression/)
 2. [Ordinal logistic regression](https://stats.idre.ucla.edu/r/dae/ordinal-logistic-regression/)
-
----
 
