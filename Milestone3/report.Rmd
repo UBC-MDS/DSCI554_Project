@@ -113,7 +113,11 @@ clean_data %>%
        title = "Heatmap of Programming Experience vs. Difficulty") +
   theme(plot.title = element_text(size = 13, face = "bold", hjust = 0.5)) +
   geom_bar(aes(difficulty)) +
-  facet_wrap(~prog_exp)
+  facet_wrap(~prog_exp) +
+  scale_x_discrete(
+    labels = function(difficulty)
+      str_wrap(difficulty, width = 14)
+  )
 ```
 
  <p style="text-align:center;">Figure 2.</p>

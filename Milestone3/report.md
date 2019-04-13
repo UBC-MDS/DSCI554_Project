@@ -322,34 +322,9 @@ lrtest(olr.M3, olr.M0)
 
 Again, this does not yeild a better fit than the null model.
 
-``` r
-# TBD: Shoud we try this?
-olr.M4 <- polr(difficulty~sex+math_skill+friend_with_prog*prog_exp, data=clean_data)
-```
-
-    ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
-
-``` r
-#Are all variables good predictors?
-lrtest(olr.M4, olr.M0)
-```
-
-    ## Likelihood ratio test
-    ## 
-    ## Model 1: difficulty ~ sex + math_skill + friend_with_prog * prog_exp
-    ## Model 2: difficulty ~ 1
-    ##   #Df  LogLik  Df  Chisq Pr(>Chisq)  
-    ## 1  12 -47.367                        
-    ## 2   2 -55.422 -10 16.109    0.09655 .
-    ## ---
-    ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
 # 5.0 Discussion
 
 ## 5.1 Findings
-
-1.  Discussing the results and findings of your survey and analysis of
-    the survey data.
 
 The main aspect of our analysis is to investigate the influence of prior
 programming experience on the outcome, self-perceived difficulty of DSCI
@@ -381,7 +356,12 @@ results.
 | Easier than average|Average         | 0.6383519 |  1.9162460 | 0.3331263 | 0.7390390 |
 | Average|More difficult than average | 2.8598348 |  1.9598299 | 1.4592261 | 0.1445029 |
 
-> > ??? comparison results
+*Table 2. P-value of coefficients and intercepts*
+
+Similarly, when we compared multiple alternative models via the
+likelihood ratio test, we did not find any that were a significantly
+better fit than the null model. Therfore, this method also indicates
+that we do not evidence to reject the null hypothesis.
 
 ## 5.2 Survey design
 
@@ -395,6 +375,13 @@ gather data to control for them. This diligence helped our end goal of
 reaching a conclusion free of spurious findings. We also made an
 assumption that relationship between each pair of outcome groups is the
 same.
+
+We also streamlined our survey questions to lighten the cognitive load
+on participants. We believe this helped us maximize our sample size.
+Unfortunately, this involved lowering the number of intervals in our
+observed variables to a point where we could only analyze them as
+categorical variables. This problem is discussed further under **Future
+Directions**, below.
 
 ### Limitations
 
@@ -433,22 +420,3 @@ is definitely something we would change.
     regression](https://stats.idre.ucla.edu/r/dae/ordinal-logistic-regression/)
 
 -----
-
-  - Your target audience is other Data Scientists who are not familiar
-    with your project.
-  - Clearly introduce the survey topic and question you were interested
-    in answering.
-  - Link to your study’s data and code in the methods section of your
-    report.
-  - Include effective visualizations and/or tables that help communicate
-    your findings.
-  - Your discussion should have 2 key focuses:
-    1.  Discussing the results and findings of your survey and analysis
-        of the survey data.
-    2.  Discussing your survey/study design, specifically:
-    <!-- end list -->
-      - what did you do well to make this study as causal as possible?
-      - what was not done well and how did that effect your studies
-        conclusions?
-      - what would you do differently next time to improve your
-        survey/study design and why?
