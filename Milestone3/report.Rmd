@@ -205,7 +205,7 @@ ctable %>% kable()
 
 *Table 2. P-values of coefficients and intercepts*
  
-We can observe from table 6 that all p-values are greater than a typical threshold 0.05, which indicates that no significant difference exists. In other words, the different level of programming experience prior to the MDS program does not affect the MDS students' self-perceived difficulty of DSCI 512. The other exposure variables neither influence the outcome variable.
+We can observe from table 6 that all p-values are greater than a typical threshold 0.05, which indicates that no significant difference exists. In other words, the level of programming experience prior to the MDS program does not affect the MDS students' self-perceived difficulty of DSCI 512. The other exposure variables did not influence the outcome variable either.
 
 ```{r, echo=FALSE, eval=FALSE}
 ## Odd Ratios and CI 
@@ -286,7 +286,7 @@ We performed two methods of testing, basic ordinal logistic regression test and 
 
 In the ordinal logistic regression, we found that none of exposure variable has p-values greater than 0.05 in table 2, which indicates that we do not have evidence to reject the null hypothesis. The Anova type 3 test also provides similar results.
 
-Similarly, when we compared multiple alternative models via the likelihood ratio test, we did not find any that were a significantly better fit than the null model.  Therefore, this method also indicates that we do not evidence to reject the null hypothesis.
+Similarly, when we compared multiple alternative models via the likelihood ratio test, we did not find any that were a significantly better fit than the null model.  Therefore, this method also indicates that we do not have sufficient evidence to reject the null hypothesis.
 
 ## 5.2 Survey design
 
