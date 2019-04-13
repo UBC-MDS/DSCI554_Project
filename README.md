@@ -32,4 +32,4 @@ In this project, we will design several survey questions and collect information
 | Milestone 3 | [Report MD](./Milestone3/report.md) |
 | Milestone 3 | [Report PDF](./Milestone3/report.pdf) |
 | Milestone 3 | [Report source code](./Milestone3/report.Rmd) |
-| Milestone 3 | [Peer Review of Milestone 2](https://github.com/UBC-MDS/DSCI_554-lab-time-analysis/issues/44) |
+| Milestone 3 | [Peer Review of Milestone 2 for CHEUK MAN, SYLVIA, HAYLEY, SABRINA (KAKEI)](https://github.com/UBC-MDS/DSCI_554-lab-time-analysis/issues/44) |
