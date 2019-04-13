@@ -273,8 +273,6 @@ Again, this does not yeild a better fit than the null model.
 # 5.0 Discussion
 
 ## 5.1 Findings
-
-1. Discussing the results and findings of your survey and analysis of the survey data.
   
 The main aspect of our analysis is to investigate the influence of prior programming experience on the outcome, self-perceived difficulty of DSCI 512, based on the assumption that the relationship between each pair of outcome groups is the same. We identified three other confounding variables, sex, mathematics skill level and whether or not a student has friends or family with programming experience. In this report, we analyzed the relationship between the main exposure and the outcome, as well as determined the casual effect of those confounders.
 
@@ -313,13 +311,3 @@ Originally when we were designing our survey, we thought it was very logical to 
 
 ---
 
-- Your target audience is other Data Scientists who are not familiar with your project.
-- Clearly introduce the survey topic and question you were interested in answering.
-- Link to your study's data and code in the methods section of your report.
-- Include effective visualizations and/or tables that help communicate your findings.
-- Your discussion should have 2 key focuses:
-  1. Discussing the results and findings of your survey and analysis of the survey data.
-  2. Discussing your survey/study design, specifically:
-    - what did you do well to make this study as causal as possible?
-    - what was not done well and how did that effect your studies conclusions?
-    - what would you do differently next time to improve your survey/study design and why?
